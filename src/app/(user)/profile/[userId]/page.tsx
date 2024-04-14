@@ -26,7 +26,7 @@ export default function Page({ params }: { params: { userId: string }}) {
         </PageHeaderEvo>
         <BackgroundGridBig />
         <div className="grid w-[848px] gap-[16px] auto-rows-[128px] grid-cols-6x128">
-            <Tile size="2x2">{profile.avatar}</Tile>
+            <Tile size="2x2" color="blue">{profile.avatar}</Tile>
             <Tile align="bottom" name="Имя">{profile.first_name}</Tile>
             <Tile size="2x1" name="E-mail">{user.email}</Tile>
             <Tile name="Фамилия">{profile.last_name}</Tile>
