@@ -7,6 +7,12 @@ import PageHeaderEvo from "@/components/PageHeaderEvo"
 import HeadingTab from "@/components/PageHeaderEvo/HeadingTab"
 import Tile from "@/components/Tile/Regular"
 
+export async function generateStaticParams() {
+    return USERS.map((channel) => ({
+      id: channel.id,
+    }))
+  }
+
 export default function Page({ params }: { params: { userId: number }}) {
     const user = USERS.find(e => e.id == params.userId)
     const profile = PROFILES.find(e => e.userId == params.userId)

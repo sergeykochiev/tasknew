@@ -6,6 +6,12 @@ import NoDataPlaceholder from "@/components/NoDataPlaceholder"
 import Tile from "@/components/Tile/Regular"
 import Link from "next/link"
 
+export async function generateStaticParams() {
+    return TASKS.map((channel) => ({
+      slug: channel.slug,
+    }))
+  }
+
 export default function Page({ params }: { params: { slug: string }}) {
     const currentTask = TASKS.find(e => e.slug == params.slug)
     const currentUser = CURRENT_USER
