@@ -37,7 +37,7 @@ export default function Page() {
                 <TextArea light={false} placeholder="Название" name="label" required small/>
                 <TextArea light={false} placeholder="Краткое описание" name="brief_description" small/> 
                 <TextArea light={false} placeholder="Описание" name="description" required/>
-                <LabeledCheckboxBar label="Публичный"/>
+                <LabeledCheckboxBar label="Публичный" name="is_public" value="true"/>
             </form>
         </W1>
     </>    

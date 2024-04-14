@@ -1,6 +1,5 @@
 import DefButton from "@/components/Button";
 import ButtonGroup from "@/components/ButtonGroup";
-import FullPageHeader from "@/components/PageHeader/header/Full";
 import PageHeaderEvo from "@/components/PageHeaderEvo";
 import HeadingTab from "@/components/PageHeaderEvo/HeadingTab";
 

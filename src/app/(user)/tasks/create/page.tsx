@@ -4,9 +4,12 @@ import { CHANNELS, CURRENT_USER, TASKS } from "@/common/temp-data";
 import ChannelStruct from "@/common/types/data-sctructures/channel";
 import DefButton from "@/components/Button";
 import DefInput from "@/components/InputField";
+import LabeledCheckboxBar from "@/components/LabeledCheckboxBar";
+import PageHeaderEvo from "@/components/PageHeaderEvo";
+import HeadingTab from "@/components/PageHeaderEvo/HeadingTab";
+import W1 from "@/components/Pages/wrappers/list-page-wrapper";
 import W1S from "@/components/Pages/wrappers/searchable-list-page-wrapper";
-import BigTextArea from "@/components/TextArea";
-import SmallTextArea from "@/components/TextArea/small";
+import TextArea from "@/components/TextArea";
 import { Channel } from "diagnostics_channel";
 import { FormEvent } from "react";
 import { uid } from "uid";
@@ -34,17 +37,22 @@ export default function Page() {
         })
         console.log(TASKS[TASKS.length - 1])
     }
-    return (
-        <W1S light={false}>
-            <form className="w-[848px] flex flex-col gap-[16px] items-end" name="newChannel" onSubmit={onSubmit}>
-                <DefButton color="blue" type="submit">Создать</DefButton>
-                <SmallTextArea light={false} placeholder="Название" name="title" required/>
-                <SmallTextArea light={false} placeholder="Краткое описание" name="brief_description" />
+
+    return ( <>
+        <PageHeaderEvo>
+            <HeadingTab>Создание канала</HeadingTab>
+            <DefButton color="blue" type="submit" form="new-channel">Создать</DefButton>
+        </PageHeaderEvo>
+        <W1 light={false}>
+        <form className="w-[848px] flex flex-col gap-[16px] items-end" name="newChannel" onSubmit={onSubmit}>
+                <TextArea light={false} placeholder="Название" name="title" required/>
+                <TextArea light={false} placeholder="Краткое описание" name="brief_description" />
                 <DefInput light={false} placeholder="Кол-во попыток" name="attempts" type="number"/>
-                <BigTextArea light={false} placeholder="Описание" name="detailed_description" required/>
-                <label className="text-white">Публичный<input type="checkbox" name="visible" value="true"/></label>
-                <label className="text-white">Можно оценить<input type="checkbox" name="is_feedback" value="true"/></label>
+                <TextArea light={false} placeholder="Описание" name="detailed_description" required/>
+                <LabeledCheckboxBar name="visible" label="Показывать в поиске" value="true"/>
+                <LabeledCheckboxBar name="is_feedback" label="Можно оценивать" value="true"/>
             </form>
-        </W1S>
+        </W1>
+    </>    
     )
 }
