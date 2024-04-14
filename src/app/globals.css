@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+div.tile {
+  @apply outline-[9px] outline outline-bg-dark bg-bg-dark
+}
+
+.tile:not(:has(div.tile)) div.tile-content {
+  @apply p-[16px] flex
+}
+
+.tile:has(div.tile) {
+  @apply grid grid-cols-subgrid grid-rows-subgrid p-0
+}
+
+.tile:has(div.tile) div.tile-content {
+  @apply grid grid-cols-subgrid grid-rows-subgrid gap-[16px]
+}
+
+.tile:has(div.tile) div.tile {
+  outline: none;
+  @apply bg-transparent
+}
+
+.tile:has(div.tile) div.tile div.tile-content {
+  box-shadow: none; 
+  outline: none;
+  @apply hover:translate-y-0
+}
+
+div.tile-content {
+  @apply rounded-[16px] hover:translate-y-[-4px]
+}
+div.tile-content:hover {
+  outline: solid 2px;
+}
+
+div.tile-content.bg-tile-gray:hover {
+  outline-color: #757575;
+  box-shadow: 0 4px 0 2px #757575;
+}
+
+div.tile-content.bg-main-blue:hover {
+  outline-color: #006D8F;
+  box-shadow: 0 4px 0 2px #006D8F;
+}
+
+div.tile-content.bg-tile-red:hover {
+  outline-color: #781818;
+  box-shadow: 0 4px 0 2px #781818;
+}
+
+.tile:has(div.tile) div.tile div.tile-content {
+  @apply flex flex-col gap-[8px]
+}
+
+div.tile-content.blue.tile-bigtext {
+ @apply text-tile-gray
+}
+
+div.tile-content.gray.tile-bigtext {
+  @apply text-main-blue
+}
+
+.tile-1x1 {
+  @apply col-span-1 row-span-1
+}
+.tile-2x2 {
+  @apply col-span-2 row-span-2
+}
+.tile-3x1 {
+  @apply col-span-3 row-span-1
+}
+.tile-2x1 {
+  @apply col-span-2 row-span-1
+}
+.tile-4x2 {
+  @apply col-span-4 row-span-2
+}
+.tile-3x2 {
+  @apply col-span-3 row-span-2
+}
+.gray {
+  @apply bg-tile-gray text-bg-dark
+}
+.red {
+  @apply bg-tile-red text-black
+}
+.blue {
+  @apply bg-main-blue text-bg-dark
+}
+.dark-gray {
+  @apply bg-bg-dark text-white
+}
+.white {
+  @apply bg-white text-bg-dark
+}
+.section-left {
+  @apply items-start text-left
+}
+.section-right {
+  @apply items-end text-right
+}
+.section-center {
+  @apply items-center text-center
+}
+.tile-top {
+  @apply flex-col
+}
+.tile-bottom {
+  @apply flex-col justify-end
+}
+.tile-bottom-reversed {
+  @apply flex-col-reverse
+}
+.tile-center {
+  @apply justify-center items-center
+}
