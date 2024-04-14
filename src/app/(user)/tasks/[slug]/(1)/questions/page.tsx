@@ -18,3 +18,7 @@
 //     //     <ContentContainer searchState={[search, setSearch]} data={channelTasks} Component={TaskTile}/>
 //     // )   
 // }
+
+export default function Page() {
+    
+}
