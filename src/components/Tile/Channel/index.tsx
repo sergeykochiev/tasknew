@@ -30,7 +30,7 @@ const ChannelTile: FC<ChannelTileProps> = ({
                 </div>
                 <div className="flex text-[12px] gap-[4px] items-center">
                     <div>
-                        {data.public ? "Публичный" : "Приватный"}/{data.price ? `${data.price} рублей` : "Бесплатный"}
+                        {data.is_public ? "Публичный" : "Приватный"}/{data.price ? `${data.price} рублей` : "Бесплатный"}
                     </div>
                     -
                     <div>
