@@ -9,13 +9,13 @@ import Tile from "@/components/Tile/Regular"
 
 export async function generateStaticParams() {
     return USERS.map((channel) => ({
-      userId: channel.id,
+      userId: String(channel.id),
     }))
   }
 
-export default function Page({ params }: { params: { userId: number }}) {
-    const user = USERS.find(e => e.id == params.userId)
-    const profile = PROFILES.find(e => e.userId == params.userId)
+export default function Page({ params }: { params: { userId: string }}) {
+    const user = USERS.find(e => e.id == Number(params.userId))
+    const profile = PROFILES.find(e => e.userId == Number(params.userId))
     return ( user && profile ? <>
         <PageHeaderEvo>
             <HeadingTab>{"Профиль " + user.nickname}</HeadingTab>
