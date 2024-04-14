@@ -7,8 +7,8 @@ export default function Page() {
         <main className="flex flex-col">
             <TopPageSection heading="Tycoon Task">
                 Новая, современная платформа для взаимодействия между теми, кто обучает и теми, кто обучается.
-                <DefButton color="blue">Подробнее</DefButton>
-                <DefButton color="dark-gray">Войти</DefButton>
+                <DefButton className="w-[128px]" color="blue">Подробнее</DefButton>
+                <DefButton className="w-[128px]" color="dark-gray" redirectTo="/home">Войти</DefButton>
             </TopPageSection>
             <StartPageSection color="dark-gray" heading="Красота в простоте" align="left">
                 Вы создаете задания, которые можно группировать по каналам. Или вы их решаете.

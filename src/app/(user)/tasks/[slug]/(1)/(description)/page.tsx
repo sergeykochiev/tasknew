@@ -1,4 +1,6 @@
-import { CHANNELS, CURRENT_USER, TASKS } from "@/common/temp-data"
+"use client"
+
+import { CURRENT_USER, TASKS } from "@/common/temp-data"
 import BackgroundGridBig from "@/components/BackgroundGrid/Big"
 import NoDataPlaceholder from "@/components/NoDataPlaceholder"
 import Tile from "@/components/Tile/Regular"

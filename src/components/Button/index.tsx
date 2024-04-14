@@ -6,19 +6,21 @@ import { ButtonHTMLAttributes, FC } from "react";
 
 interface DefButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     color?: ComponentColors,
-    redirectTo?: string
+    redirectTo?: string,
+    className?: string
 }
 
 const DefButton: FC<DefButtonProps> = ({
     color = "gray",
     children,
     redirectTo,
+    className,
     ...props
 }) => {
     const router = useRouter()
 
     return (
-        <button className={`button text-[14px] h-[41px] px-[24px] grid place-items-center rounded-[16px] ${color} text-bg-dark z-10`} onClick={() => redirectTo && router.push(redirectTo)} {...props}>{children}</button>
+        <button className={`button text-[14px] h-[41px] px-[24px] grid place-items-center rounded-[16px] ${color} text-bg-dark z-10 ${className!}`} onClick={() => redirectTo && router.push(redirectTo)} {...props}>{children}</button>
     )
 }
 

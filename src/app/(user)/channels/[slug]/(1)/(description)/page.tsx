@@ -1,3 +1,5 @@
+"use client"
+
 import { CHANNELS, CURRENT_USER } from "@/common/temp-data"
 import BackgroundGridBig from "@/components/BackgroundGrid/Big"
 import NoDataPlaceholder from "@/components/NoDataPlaceholder"
