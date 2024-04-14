@@ -9,7 +9,7 @@ import Tile from "@/components/Tile/Regular"
 
 export async function generateStaticParams() {
     return USERS.map((channel) => ({
-      id: channel.id,
+      userId: channel.id,
     }))
   }
 
