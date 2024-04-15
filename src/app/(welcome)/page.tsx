@@ -6,11 +6,11 @@ export default function Page() {
     return (
         <main className="flex flex-col">
             <TopPageSection heading="Tycoon Task">
-                Новая, современная платформа для взаимодействия между теми, кто обучает и теми, кто обучается.
+                Описание
                 <DefButton className="w-[128px]" color="blue">Подробнее</DefButton>
                 <DefButton className="w-[128px]" color="dark-gray" redirectTo="/home">Войти</DefButton>
             </TopPageSection>
-            <StartPageSection color="dark-gray" heading="Красота в простоте" align="left">
+            {/* <StartPageSection color="dark-gray" heading="Красота в простоте" align="left">
                 Вы создаете задания, которые можно группировать по каналам. Или вы их решаете.
                 <DefButton color="blue">Создать</DefButton>
             </StartPageSection>
@@ -25,7 +25,7 @@ export default function Page() {
             <StartPageSection color="dark-gray" heading="Все еще не с нами?" align="center">
                 Предлагаем вам присоединиться и попробовать. Это бесплатно!
                 <DefButton color="blue">Вперед</DefButton>
-            </StartPageSection>
+            </StartPageSection> */}
         </main>
     )
 }
