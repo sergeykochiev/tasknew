@@ -58,7 +58,7 @@ const PROFILES: Array<ProfileStruct> = [
         last_name: "Кочиев",
         avatar: "",
         slug: "2",
-        visible: true,
+        visible: false,
         creation_date: "20.03.2024 12:04:56",
         userId: 2
     },

@@ -1,1 +1,1 @@
-export type ComponentColors = "gray" | "dark-gray" | "blue" | "white" | "red"
+export type ComponentColors = "gray" | "dark-gray" | "blue" | "white" | "red" | "mid-gray"

@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header/header/full";
 import Footer from "@/components/Footer";
 import { inter } from "@/common/fonts";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +21,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {children}
-        <Footer />
       </body>
     </html>
   );
