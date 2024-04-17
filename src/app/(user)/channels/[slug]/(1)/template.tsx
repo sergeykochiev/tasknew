@@ -30,7 +30,12 @@ export default function Template({
                     <HeadingTab redirectTo={`/channels/${params.slug}/tasks`}>{`Задания канала`}</HeadingTab>
                 </ButtonGroup>
                 <ButtonGroup>
-                    {!isMine ? <DefButton color="blue" onClick={() => setSubbed(!subbed)}>{subbed ? "Выйти из канала" : "Войти в канал"}</DefButton> : <DefButton>Редактировать</DefButton>}
+                    {!isMine ? <DefButton color="blue" onClick={() => setSubbed(!subbed)}>{subbed ? "Выйти из канала" : "Войти в канал"}</DefButton> :
+                        <>
+                        <DefButton>Добавить задание</DefButton>
+                        <DefButton color="blue" redirectTo={`/channels/${params.slug}/edit`}><img src="/ic_round-edit.svg"/></DefButton>
+                        </>
+                    }
                 </ButtonGroup>
             </PageHeaderEvo>
             {children}

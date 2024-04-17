@@ -1,5 +1,7 @@
+import TempDB from "../helpers/local-db";
 import ChannelStruct from "../types/data-sctructures/channel";
 import ProfileStruct from "../types/data-sctructures/profile";
+import QuestionStruct from "../types/data-sctructures/question";
 import TaskStruct from "../types/data-sctructures/task";
 import UserStruct from "../types/data-sctructures/user";
 
@@ -283,4 +285,112 @@ const TASKS: Array<TaskStruct> = [
     },
 ]
 
-export { USERS, PROFILES, TASKS, CHANNELS, CURRENT_USER }
+const QUESTIONS: Array<QuestionStruct> = [
+    {
+        id: 1,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 1
+    },
+    {
+        id: 2,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 1
+    },
+    {
+        id: 3,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 1
+    },
+    {
+        id: 4,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 1
+    },
+    {
+        id: 5,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 1
+    },
+    {
+        id: 6,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 1
+    },
+    {
+        id: 7,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 2
+    },
+    {
+        id: 8,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 2
+    },
+    {
+        id: 9,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 2
+    },
+    {
+        id: 10,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 2
+    },
+    {
+        id: 11,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 2
+    },
+    {
+        id: 12,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 2
+    },
+    {
+        id: 13,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 2
+    },
+    {
+        id: 14,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 3
+    },
+    {
+        id: 15,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 3
+    },
+    {
+        id: 16,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 3
+    },
+    {
+        id: 17,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 3
+    },
+    {
+        id: 18,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 3
+    },
+    {
+        id: 19,
+        label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
+        taskId: 3
+    }
+]
+
+export { USERS, PROFILES, TASKS, CHANNELS, CURRENT_USER, QUESTIONS }
+
+export async function seedTempDB(): Promise<void> {
+    const database = new TempDB()
+    await database.put('users', USERS)
+    await database.put('profiles', PROFILES)
+    await database.put('tasks', TASKS)
+    await database.put('channels', CHANNELS)
+    await database.put('questions', QUESTIONS)
+}
+

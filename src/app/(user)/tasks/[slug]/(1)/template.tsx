@@ -21,20 +21,23 @@ export default function Template({
         return <NoDataPlaceholder/>
     }
     const isMine = currentUser.id == currentTask.creatorId
+    const [isFav, setFav] = useState<boolean>(false)
     return (
         <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
             <PageHeaderEvo>
                 <ButtonGroup>
-                    <HeadingTab redirectTo={`/tasks/${params.slug}`}>{`Описание задания "${currentTask!.title}"`}</HeadingTab>
-                    <HeadingTab redirectTo={`/tasks/${params.slug}/questions`}>{`Вопросы задания`}</HeadingTab>
+                    <HeadingTab redirectTo={`/tasks/${params.slug}`}>{"Описание " + `"${currentTask.title}"`}</HeadingTab>
+                    <HeadingTab redirectTo={`/tasks/${params.slug}/questions`}>Вопросы</HeadingTab>
                 </ButtonGroup>
                 <ButtonGroup>
                     {!isMine ? <>
                         <DefButton>Попытки</DefButton>
+                        <DefButton onClick={() => setFav(!isFav)}>{isFav ? "**" : "*"}</DefButton>
                         <DefButton color="blue">Решить</DefButton>              
                     </> : <>
                         <DefButton>Статистика</DefButton>
-                        <DefButton color="blue">Редактировать</DefButton>
+                        <DefButton >Добавить вопрос</DefButton>
+                        <DefButton color="blue"><img src="/ic_round-edit.svg"/></DefButton>
                     </>}
                 </ButtonGroup>
             </PageHeaderEvo>

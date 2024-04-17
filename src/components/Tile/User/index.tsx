@@ -15,7 +15,7 @@ const UserTile: FC<TaskTileProps> = ({
 }) => {
     const router = useRouter()
     const onclick = () => {
-        router.push(`/profile/${data.id}`)
+        router.push(`/user/${data.id}`)
     }
     return (
         <div className={`z-20 col-span-3 row-span-[0,5] outline outline-[9px] ${light ? "bg-white outline-white" : "bg-bg-dark outline-bg-dark"}`}>
@@ -31,11 +31,6 @@ const UserTile: FC<TaskTileProps> = ({
                         </div> : <div className="text-[12px]">
                             Вне системы
                         </div>}
-                    </div>
-                    <div className="flex w-full justify-end">
-                        <div className={`button text-[14px] h-[41px] w-[128px] grid place-items-center rounded-[16px] bg-main-blue text-bg-dark z-10`} onClick={() => {console.log("подписаться")}}>
-                            Подписаться
-                        </div>
                     </div>
                 </div>
             </div>

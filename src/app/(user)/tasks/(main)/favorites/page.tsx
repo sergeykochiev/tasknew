@@ -13,8 +13,7 @@ export default function Page() {
         const fetchChannels = async () => {
             const db = new TempDB()
             const tasks = (await db.get("tasks")) as Array<TaskStruct>
-            const currentUser = CURRENT_USER
-            setTasks(tasks.filter(e => e.creatorId == currentUser.id))
+            setTasks(tasks)
         }
         fetchChannels()
     }, [])

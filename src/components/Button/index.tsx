@@ -1,8 +1,9 @@
 "use client"
 
+import apply2pxHover from "@/common/helpers/2px-hover";
 import { ComponentColors } from "@/common/types/colors";
 import { useRouter } from "next/navigation";
-import { ButtonHTMLAttributes, FC } from "react";
+import { ButtonHTMLAttributes, FC, useEffect, useId } from "react";
 
 interface DefButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     color?: ComponentColors,
@@ -18,9 +19,14 @@ const DefButton: FC<DefButtonProps> = ({
     ...props
 }) => {
     const router = useRouter()
-
+    const buttonId = useId()
+    useEffect(() => {
+        apply2pxHover(buttonId )
+    }, [])
     return (
-        <button className={`button text-[14px] h-[41px] px-[24px] grid place-items-center rounded-[16px] ${color} text-bg-dark z-10 ${className!}`} onClick={() => redirectTo && router.push(redirectTo)} {...props}>{children}</button>
+        <button id={buttonId} className={`whitespace-nowrap group relative overflow-hidden m-0 transition-all button text-[14px] h-[41px] px-[24px] flex items-center justify-center rounded-[16px] ${color} text-bg-dark z-10 ${className!}`} onClick={() => redirectTo && router.push(redirectTo)} {...props}>
+            {children}
+        </button>
     )
 }
 

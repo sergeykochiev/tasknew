@@ -11,7 +11,7 @@ export default function Layout({
         <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
             <PageHeaderEvo>
                 <HeadingTab>Подписки на пользователей</HeadingTab>
-                <DefButton redirectTo="/channels/create">Найти еще</DefButton>
+                <DefButton redirectTo="/discover/users">Найти еще</DefButton>
             </PageHeaderEvo>
             {children}
         </main>

@@ -12,8 +12,8 @@ export default function Layout({
         <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
             <PageHeaderEvo>
               <ButtonGroup>
-                <HeadingTab redirectTo="/channels/created">Созданные каналы</HeadingTab>
-                <HeadingTab redirectTo="/channels/subscribed">Ваши подписки</HeadingTab>
+                <HeadingTab redirectTo="/channels/created">Созданные</HeadingTab>
+                <HeadingTab redirectTo="/channels/subscribed">Подписки</HeadingTab>
               </ButtonGroup>
               <ButtonGroup>
                 <DefButton redirectTo="/discover/channels">Найти еще</DefButton>

@@ -7,7 +7,6 @@ export default function Layout({
   }>) {
     return (
         <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
-            <PageHeader>Создание задания</PageHeader>
             {children}
         </main>
     );

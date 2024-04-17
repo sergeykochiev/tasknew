@@ -13,8 +13,9 @@ export default function Layout({
         <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
             <PageHeaderEvo>
               <ButtonGroup>
-                <HeadingTab redirectTo="/tasks/created">Созданные задания</HeadingTab>
-                <HeadingTab redirectTo="/tasks/solved">Решенные задания</HeadingTab>
+                <HeadingTab redirectTo="/tasks/created">Созданные</HeadingTab>
+                <HeadingTab redirectTo="/tasks/solved">Решенные</HeadingTab>
+                <HeadingTab redirectTo="/tasks/favorites">Избранное</HeadingTab>
               </ButtonGroup>
               <ButtonGroup>
                 <DefButton redirectTo="/discover/tasks">Найти еще</DefButton>

@@ -20,7 +20,7 @@ const LabeledCheckboxBar: FC<LabeledCheckboxBarProps> = ({
             </div>
             <label className="button text-[14px] h-[41px] px-[24px] grid place-items-center rounded-[16px] bg-tile-gray text-bg-dark select-none">
                 {checkedState ? checkboxLabels[0] : checkboxLabels[1]}
-                <input className="hidden absolute" type="checkbox" checked={checkedState} onClick={() => setChecked(!checkedState!)} {...props}></input>
+                <input className="hidden absolute" type="checkbox" checked={checkedState} onChange={() => setChecked(!checkedState!)} {...props}></input>
             </label>
         </div>
     )

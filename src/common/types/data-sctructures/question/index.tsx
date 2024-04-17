@@ -2,8 +2,7 @@ class QuestionStruct {
     constructor(
         public id: number,
         public taskId: number,
-        public label: string,
-        public description: string,
+        public label: string
     ) {}
 }
 
