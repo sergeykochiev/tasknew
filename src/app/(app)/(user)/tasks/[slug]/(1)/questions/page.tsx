@@ -1,11 +1,8 @@
 "use client"
 
-import TempDB from "@/common/helpers/local-db"
-import { CURRENT_USER, QUESTIONS, TASKS } from "@/common/temp-data"
+import { TempDB, deleteEntry } from "@/common/helpers";
 import QuestionStruct from "@/common/types/data-sctructures/question"
 import TaskStruct from "@/common/types/data-sctructures/task"
-import DefButton from "@/components/Button"
-import ContentContainer from "@/components/ContentContainer"
 import NoDataPlaceholder from "@/components/NoDataPlaceholder"
 import QuestionTIle from "@/components/Tile/Question"
 import { useEffect, useState } from "react"
@@ -22,11 +19,16 @@ export default function Page({ params }: { params: { slug: string }}) {
         }
         fetchChannels()
     }, [])
-    const [questions, setQuestions] = useState<Array<QuestionStruct>>()
-    if (!questions) return <NoDataPlaceholder/>
+    const [questions, setQuestions] = useState<Array<QuestionStruct>>([])
+    const deleteQuestion = async (id: number) => {
+        questions.splice(questions.findIndex(e => e.id == id))
+        await deleteEntry("questions", id)
+        setQuestions([...questions])
+    }
+    if (questions.length == 0) return <NoDataPlaceholder placeholder="Не добавлено ни одного вопроса"/>
     return ( <div className="w-[848px] flex flex-col gap-[16px]">
         <div className="flex flex-col gap-[16px]">
-            {questions.map((e, i) => <QuestionTIle data={e} index={i + 1}/>)}
+            {questions.map((e, i) => <QuestionTIle deleteQuestion={deleteQuestion} data={e} index={i + 1}/>)}
         </div>
     </div>  
     )

@@ -1,7 +1,8 @@
 "use client"
 
 import { USERS } from "@/common/temp-data";
-import DefButton from "@/components/Button";
+import Button from "@/components/Button";
+import LinkButton from "@/components/Button/LinkButton";
 import ButtonGroup from "@/components/ButtonGroup";
 import PageHeaderEvo from "@/components/PageHeaderEvo";
 import HeadingTab from "@/components/PageHeaderEvo/HeadingTab";
@@ -20,9 +21,9 @@ export default function Template({
         <PageHeaderEvo>
             <HeadingTab>{"Профиль " + (user && user.nickname)}</HeadingTab>
             <ButtonGroup>
-                <DefButton redirectTo="/tasks/created">Задания</DefButton>
-                <DefButton redirectTo="/tasks/created">Каналы</DefButton>
-                <DefButton color="blue" onClick={() => setSubbed(!subbed)}>{subbed ? "Отписаться" : "Подписаться"}</DefButton>
+                <LinkButton href="/tasks/created">Задания</LinkButton>
+                <LinkButton href="/tasks/created">Каналы</LinkButton>
+                <Button color="blue" onClick={() => setSubbed(!subbed)}>{subbed ? "Отписаться" : "Подписаться"}</Button>
             </ButtonGroup>
         </PageHeaderEvo>
         {children}

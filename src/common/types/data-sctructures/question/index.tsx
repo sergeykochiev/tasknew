@@ -1,8 +1,11 @@
+import AnswerOrQuestionType from "./answerOrQuestionType";
+
 class QuestionStruct {
     constructor(
         public id: number,
         public taskId: number,
-        public label: string
+        public label: string,
+        public questionType: AnswerOrQuestionType
     ) {}
 }
 

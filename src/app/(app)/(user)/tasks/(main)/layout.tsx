@@ -1,25 +1,26 @@
-import DefButton from "@/components/Button";
+import LinkButton from "@/components/Button/LinkButton";
 import ButtonGroup from "@/components/ButtonGroup";
-import FullPageHeader from "@/components/PageHeader/header/Full";
 import PageHeaderEvo from "@/components/PageHeaderEvo";
-import HeadingTab from "@/components/PageHeaderEvo/HeadingTab";
+import LinkHeadingTab from "@/components/PageHeaderEvo/HeadingTab/LinkHeadingTab";
+import { useId } from "react";
 
 export default function Layout({
     children,
   }: Readonly<{
     children: React.ReactNode;
   }>) {
+    const id = useId()
     return (
         <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
             <PageHeaderEvo>
               <ButtonGroup>
-                <HeadingTab redirectTo="/tasks/created">Созданные</HeadingTab>
-                <HeadingTab redirectTo="/tasks/solved">Решенные</HeadingTab>
-                <HeadingTab redirectTo="/tasks/favorites">Избранное</HeadingTab>
+                <LinkHeadingTab href="/tasks/created" name={id}>Созданные</LinkHeadingTab>
+                <LinkHeadingTab href="/tasks/solved" name={id}>Решенные</LinkHeadingTab>
+                <LinkHeadingTab href="/tasks/favorites" name={id}>Избранное</LinkHeadingTab>
               </ButtonGroup>
               <ButtonGroup>
-                <DefButton redirectTo="/discover/tasks">Найти еще</DefButton>
-                <DefButton redirectTo="/tasks/create">Создать</DefButton>
+                <LinkButton href="/discover/tasks">Найти еще</LinkButton>
+                <LinkButton href="/tasks/create">Создать</LinkButton>
               </ButtonGroup>
             </PageHeaderEvo>
             {children}

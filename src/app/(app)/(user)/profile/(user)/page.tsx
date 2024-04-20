@@ -2,18 +2,14 @@
 
 import { CURRENT_USER, PROFILES } from "@/common/temp-data";
 import BackgroundGridBig from "@/components/BackgroundGrid/Big";
-import BackgroundGridSmall from "@/components/BackgroundGrid/Small";
-import DefButton from "@/components/Button";
+import Button from "@/components/Button";
+import LinkButton from "@/components/Button/LinkButton";
 import ButtonGroup from "@/components/ButtonGroup";
-import { ProfileGrid } from "@/components/MainGrid/grid/Profile";
 import NoDataPlaceholder from "@/components/NoDataPlaceholder";
-import BlankPageHeader from "@/components/PageHeader/header/Blank";
 import PageHeaderEvo from "@/components/PageHeaderEvo";
 import HeadingTab from "@/components/PageHeaderEvo/HeadingTab";
-import BlankTile from "@/components/Tile/Blank";
 import Tile from "@/components/Tile/Regular";
 import { useRouter } from "next/navigation";
-import { uid } from "uid";
 
 export default function Page() {
     const currentUser = CURRENT_USER
@@ -53,9 +49,9 @@ export default function Page() {
         <PageHeaderEvo>
             <HeadingTab>{"Профиль " + currentUser.nickname}</HeadingTab>
             <ButtonGroup>
-                <DefButton color="blue" redirectTo="/tasks/created">Задания</DefButton>
-                <DefButton color="blue" redirectTo="/channels/created">Каналы</DefButton>
-                <DefButton color="red" onClick={() => logout()}>Выйти</DefButton>
+                <LinkButton color="blue" href="/tasks/created">Задания</LinkButton>
+                <LinkButton color="blue" href="/channels/created">Каналы</LinkButton>
+                <Button color="red" onClick={() => logout()}>Выйти</Button>
             </ButtonGroup>
         </PageHeaderEvo>
         <BackgroundGridBig />

@@ -1,7 +1,7 @@
 import { FC } from "react"
 
 const ButtonGroup: FC<{
-    children: Array<React.ReactElement> | React.ReactElement
+    children: Array<React.ReactElement> | React.ReactNode
 }> = ({
     children
 }) => {

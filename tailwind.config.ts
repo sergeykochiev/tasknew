@@ -31,6 +31,7 @@ const config: Config = {
         "12x128": "repeat(12, 128px)",
       },
       gridTemplateRows: {
+        "4x128": "repeat(4, 128px)",
         "back-grid": "repeat(6, 128px)"
       },
       gridAutoRows: {

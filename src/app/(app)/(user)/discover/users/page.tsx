@@ -1,15 +1,16 @@
 "use client"
 
-import TempDB from "@/common/helpers/local-db";
-import { USERS } from "@/common/temp-data";
+import { TempDB } from "@/common/helpers";
 import UserStruct from "@/common/types/data-sctructures/user";
 import ContentContainer from "@/components/ContentContainer";
 import UserTile from "@/components/Tile/User";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Page() {
     const [search, setSearch] = useState<string>("")
     const [data, setData] = useState<Array<UserStruct>>([])
+    const router = useRouter()
     useEffect(() => {
         console.log("dupa")
         const fetchUsers = async () => {
@@ -20,7 +21,10 @@ export default function Page() {
         if (search.length == 0) return
         fetchUsers()
     }, [search])
+    const onClick = (data: UserStruct) => {
+        router.push(`/users/${data.id}`)
+    }
     return (
-        <ContentContainer searchState={[search, setSearch]} data={data} Component={UserTile} searchableInitially={true}/>
+        <ContentContainer searchState={[search, setSearch]} data={data} Component={UserTile} searchableInitially={true} onClick={onClick}/>
     )   
 }

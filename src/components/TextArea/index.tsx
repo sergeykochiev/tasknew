@@ -3,19 +3,18 @@ import { FC } from "react";
 import { Dispatch, SetStateAction, TextareaHTMLAttributes } from "react"
 
 export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-    value?: string
-    setValue?: Dispatch<SetStateAction<string>>
-    light: boolean
+    valueState?: [string, Dispatch<SetStateAction<string>>]
+    light?: boolean
     small?: boolean
 }
 
 const TextArea: FC<TextAreaProps> = ({
     small = false,
-    value,
-    setValue,
+    valueState = [undefined, undefined],
     light = false,
     ...props
 }) => {
+    const [value, setValue] = valueState
     return (
         <textarea {...props} className={
             `resize-none
@@ -30,6 +29,8 @@ const TextArea: FC<TextAreaProps> = ({
             place-items-center
             bg-transparent
             outline
+            hover:bg-main-dark
+            transition-all
             ${light ?
                 "outline-tile-gray focus:outline-main-dark text-main-dark"
             :

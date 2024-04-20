@@ -5,21 +5,17 @@ import UserStruct from "@/common/types/data-sctructures/user";
 import { useRouter } from "next/navigation";
 import React, { FC } from "react";
 
-interface TaskTileProps extends ListEntryTileComponentProps {
-    data: UserStruct
+interface TaskTileProps extends ListEntryTileComponentProps<UserStruct> {
 }
 
 const UserTile: FC<TaskTileProps> = ({
     data,
-    light
+    light,
+    onClick
 }) => {
-    const router = useRouter()
-    const onclick = () => {
-        router.push(`/user/${data.id}`)
-    }
     return (
         <div className={`z-20 col-span-3 row-span-[0,5] outline outline-[9px] ${light ? "bg-white outline-white" : "bg-bg-dark outline-bg-dark"}`}>
-            <div onClick={onclick} className={`tile-content z-20 col-span-3 row-span-1 p-[16px] flex gap-[16px] h-full ${light ? "bg-main-dark text-tile-gray" : "bg-tile-gray text-bg-dark"} rounded-[16px]`}>
+            <div onClick={() => onClick && onClick} className={`tile-content z-20 col-span-3 row-span-1 p-[16px] flex gap-[16px] h-full ${light ? "bg-main-dark text-tile-gray" : "bg-tile-gray text-bg-dark"} rounded-[16px]`}>
                 <div className="h-full aspect-square rounded-[8px] bg-white"></div>
                 <div className="flex flex-col w-full justify-between">
                     <div className="flex flex-col gap-[8px]">

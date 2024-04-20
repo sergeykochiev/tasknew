@@ -1,15 +1,12 @@
 "use client"
 
-import TempDB from "@/common/helpers/local-db"
-import { CHANNELS, CURRENT_USER, QUESTIONS, TASKS } from "@/common/temp-data"
+import { TempDB } from "@/common/helpers";
 import ChannelStruct from "@/common/types/data-sctructures/channel"
-import QuestionStruct from "@/common/types/data-sctructures/question"
 import TaskStruct from "@/common/types/data-sctructures/task"
-import DefButton from "@/components/Button"
 import ContentContainer from "@/components/ContentContainer"
 import NoDataPlaceholder from "@/components/NoDataPlaceholder"
-import QuestionTIle from "@/components/Tile/Question"
 import TaskTile from "@/components/Tile/Task"
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react"
 
 export default function Page({ params }: { params: { slug: string }}) {
@@ -25,8 +22,12 @@ export default function Page({ params }: { params: { slug: string }}) {
         fetchChannels()
     }, [])
     const [tasks, setTasks] = useState<Array<TaskStruct>>()
+    const router = useRouter()
     if (!tasks) return <NoDataPlaceholder/>
+    const onClick = (data: TaskStruct) => {
+        router.push(`/tasks/${data.slug}`)
+    }
     return (
-        <ContentContainer searchable={false} data={tasks} Component={TaskTile}/> 
+        <ContentContainer searchable={false} data={tasks} Component={TaskTile} onClick={onClick}/> 
     )
 }

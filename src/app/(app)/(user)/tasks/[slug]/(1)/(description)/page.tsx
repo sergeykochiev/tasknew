@@ -1,7 +1,7 @@
 "use client"
 
-import TempDB from "@/common/helpers/local-db"
-import { CURRENT_USER, TASKS } from "@/common/temp-data"
+import { TempDB } from "@/common/helpers"
+import { CURRENT_USER } from "@/common/temp-data"
 import TaskStruct from "@/common/types/data-sctructures/task"
 import BackgroundGridBig from "@/components/BackgroundGrid/Big"
 import NoDataPlaceholder from "@/components/NoDataPlaceholder"

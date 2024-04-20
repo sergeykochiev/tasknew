@@ -1,5 +1,3 @@
-import PageHeader from "@/components/PageHeader/header/Blank";
-
 export default function Layout({
     children,
   }: Readonly<{

@@ -1,4 +1,4 @@
-import DefButton from "@/components/Button";
+import LinkButton from "@/components/Button/LinkButton";
 import PageHeaderEvo from "@/components/PageHeaderEvo";
 import HeadingTab from "@/components/PageHeaderEvo/HeadingTab";
 
@@ -11,7 +11,7 @@ export default function Layout({
         <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
             <PageHeaderEvo>
                 <HeadingTab>Подписки на пользователей</HeadingTab>
-                <DefButton redirectTo="/discover/users">Найти еще</DefButton>
+                <LinkButton href="/discover/users">Найти еще</LinkButton>
             </PageHeaderEvo>
             {children}
         </main>

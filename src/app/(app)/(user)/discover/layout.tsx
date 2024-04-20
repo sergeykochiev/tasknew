@@ -1,20 +1,19 @@
-import DefButton from "@/components/Button";
-import ButtonGroup from "@/components/ButtonGroup";
-import FullPageHeader from "@/components/PageHeader/header/Full";
 import PageHeaderEvo from "@/components/PageHeaderEvo";
-import HeadingTab from "@/components/PageHeaderEvo/HeadingTab";
+import LinkHeadingTab from "@/components/PageHeaderEvo/HeadingTab/LinkHeadingTab";
+import { useId } from "react";
 
 export default function Layout({
     children,
   }: Readonly<{
     children: React.ReactNode;
   }>) {
+    const id = useId()
     return (
         <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
             <PageHeaderEvo>
-                <HeadingTab redirectTo="/discover/tasks" className="w-full">Найти задания</HeadingTab>
-                <HeadingTab redirectTo="/discover/channels" className="w-full">Найти каналы</HeadingTab>
-                <HeadingTab redirectTo="/discover/users" className="w-full">Найти пользователей</HeadingTab>
+                <LinkHeadingTab href="/discover/tasks" className="w-full" name={id}>Найти задания</LinkHeadingTab>
+                <LinkHeadingTab href="/discover/channels" className="w-full" name={id}>Найти каналы</LinkHeadingTab>
+                <LinkHeadingTab href="/discover/users" className="w-full" name={id}>Найти пользователей</LinkHeadingTab>
             </PageHeaderEvo>
             {children}
         </main>

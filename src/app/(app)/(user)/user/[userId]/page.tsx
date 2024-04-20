@@ -1,16 +1,10 @@
 "use client"
 
-import TempDB from "@/common/helpers/local-db"
-import { PROFILES, USERS } from "@/common/temp-data"
+import { TempDB } from "@/common/helpers";
 import ProfileStruct from "@/common/types/data-sctructures/profile"
-import TaskStruct from "@/common/types/data-sctructures/task"
 import UserStruct from "@/common/types/data-sctructures/user"
 import BackgroundGridBig from "@/components/BackgroundGrid/Big"
-import DefButton from "@/components/Button"
-import ButtonGroup from "@/components/ButtonGroup"
 import NoDataPlaceholder from "@/components/NoDataPlaceholder"
-import PageHeaderEvo from "@/components/PageHeaderEvo"
-import HeadingTab from "@/components/PageHeaderEvo/HeadingTab"
 import Tile from "@/components/Tile/Regular"
 import { useEffect, useState } from "react"
 

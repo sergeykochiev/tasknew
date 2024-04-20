@@ -1,7 +1,9 @@
 "use client"
 
 import { seedTempDB } from "@/common/temp-data";
+import Button from "@/components/Button";
 import DefButton from "@/components/Button";
+import LinkButton from "@/components/Button/LinkButton";
 import StartPageSection from "@/components/Section/welcome/regular";
 import TopPageSection from "@/components/Section/welcome/top";
 
@@ -10,8 +12,8 @@ export default function Page() {
         <main className="flex flex-col">
             <TopPageSection heading="Tycoon Task">
                 Описание
-                <DefButton className="w-[128px]" color="blue">Подробнее</DefButton>
-                <DefButton className="w-[128px]" color="dark-gray" redirectTo="/home">Войти</DefButton>
+                <Button className="w-[128px]" color="blue">Подробнее</Button>
+                <LinkButton className="w-[128px]" color="dark-gray" href="/home">Войти</LinkButton>
             </TopPageSection>
             {/* <StartPageSection color="dark-gray" heading="Красота в простоте" align="left">
                 Вы создаете задания, которые можно группировать по каналам. Или вы их решаете.
