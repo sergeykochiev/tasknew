@@ -30,7 +30,7 @@ const TaskTile: FC<TaskTileProps> = ({
                         </div>
                         -
                         <div>
-                            {data.questionCount} вопросов
+                            10 вопросов
                         </div>
                     </div>
                 </div>

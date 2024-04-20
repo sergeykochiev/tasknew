@@ -11,7 +11,6 @@ export default function RootLayout({
     <main>
         {children}
         <Footer />
-        <Link className="fixed right-[8px] bottom-[8px] py-[8px] px-[16px] bg-main-dark rounded-[12px] text-tile-gray" href="/debug">Debug</Link>
     </main>
   );
 }

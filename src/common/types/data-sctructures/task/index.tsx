@@ -9,11 +9,9 @@ class TaskStruct {
         public creatorId: number,
         public date_created: string,
         public slug: string,
-        public identifier: string,
+        public identifier: number,
         public is_feedback: boolean,
         public attempts: number,
-        public upload: string,
-        public questionCount: number,
         public channelId?: number
     ) {}
 }

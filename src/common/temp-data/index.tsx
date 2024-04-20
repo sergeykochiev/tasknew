@@ -1,397 +1,135 @@
-import { TempDB } from "../helpers";
 import ChannelStruct from "../types/data-sctructures/channel";
 import ProfileStruct from "../types/data-sctructures/profile";
-import QuestionStruct from "../types/data-sctructures/question";
 import TaskStruct from "../types/data-sctructures/task";
 import UserStruct from "../types/data-sctructures/user";
+import VariantStruct from "../types/data-sctructures/variant";
 
-const CURRENT_USER: UserStruct = {
-    id: 4,
-    nickname: "sergeykochiev",
-    email: "asoijdoaisjda@email.com",
-    status: "статус",
-    is_staff: false,
-    is_active: false
+function genereteTasks(count: number): TaskStruct[] {
+    const output = []
+    for (let i = 0; i < count; i++) {
+        output.push({
+            id: i,
+            title: `Задание ${i}`,
+            brief_description: "Краткое описание",
+            detailed_description: "Полное описание",
+            avatar: "",
+            visibile: true,
+            creatorId: i,
+            channelId: i,
+            date_created: (new Date()).toUTCString(),
+            slug: String(i),
+            identifier: 1000000 + i,
+            is_feedback: true,
+            attempts: 3,
+        })
+    }
+    return output
 }
 
-const USERS: Array<UserStruct> = [
-    {
-        id: 1,
-        nickname: "sergeykochiev",
-        email: "aspohjdaosdh@email.com",
-        status: "статус",
-        is_staff: false,
-        is_active: true
-    },
-    {
-        id: 2,
-        nickname: "sergeykochiev",
-        email: "fsopdhoddwd@email.com",
-        status: "статус",
-        is_staff: false,
-        is_active: true
-    },
-    {
-        id: 3,
-        nickname: "sergeykochiev",
-        email: "klfgsindwaindaw@email.com",
-        status: "статус",
-        is_staff: false,
-        is_active: false
-    },
-]
-
-const PROFILES: Array<ProfileStruct> = [
-    {
-        id: 1,
-        first_name: "Сергей",
-        last_name: "Кочиев",
-        avatar: "",
-        slug: "1",
-        visible: true,
-        creation_date: "20.03.2024 12:03:56",
-        userId: 1
-    },
-    {
-        id: 2,
-        first_name: "Сергей",
-        last_name: "Кочиев",
-        avatar: "",
-        slug: "2",
-        visible: false,
-        creation_date: "20.03.2024 12:04:56",
-        userId: 2
-    },
-    {
-        id: 3,
-        first_name: "Сергей",
-        last_name: "Кочиев",
-        avatar: "",
-        slug: "3",
-        visible: true,
-        creation_date: "20.03.2024 12:05:56",
-        userId: 3
-    },
-    {
-        id: 4,
-        first_name: "Сергей",
-        last_name: "Кочиев",
-        avatar: "",
-        slug: "4",
-        visible: true,
-        creation_date: "20.03.2024 12:07:56",
-        userId: 4
-    },
-]
-
-const CHANNELS: Array<ChannelStruct> = [
-    {
-        id: 1,
-        creatorId: 1,
-        label: "Канал 1.1",
-        price: null,
-        brief_description: "",
-        description: "",
-        is_public: true,
-        tasksCount: 5,
-        subsCount: 5,
-        slug: "1"
-    },
-    {
-        id: 2,
-        creatorId: 1,
-        label: "Канал 1.2",
-        price: null,
-        brief_description: "",
-        description: "",
-        is_public: true,
-        tasksCount: 5,
-        subsCount: 5,
-        slug: "2"
-    },
-    {
-        id: 3,
-        creatorId: 1,
-        label: "Канал 1.3",
-        price: null,
-        brief_description: "",
-        description: "",
-        is_public: false,
-        tasksCount: 5,
-        subsCount: 5,
-        slug: "3"
-    },
-    {
-        id: 4,
-        creatorId: 1,
-        label: "Канал 1.4",
-        price: null,
-        brief_description: "",
-        description: "",
-        is_public: false,
-        tasksCount: 5,
-        subsCount: 5,
-        slug: "4"
-    },
-    {
-        id: 5,
-        creatorId: 2,
-        label: "Канал 2.1",
-        price: null,
-        brief_description: "",
-        description: "",
-        is_public: true,
-        tasksCount: 5,
-        subsCount: 5,
-        slug: "5"
-    },
-    {
-        id: 6,
-        creatorId: 2,
-        label: "Канал 2.2",
-        price: null,
-        brief_description: "",
-        description: "",
-        is_public: true,
-        tasksCount: 5,
-        subsCount: 5,
-        slug: "6"
-    },
-    {
-        id: 7,
-        creatorId: 2,
-        label: "Канал 2.3",
-        price: null,
-        brief_description: "",
-        description: "",
-        is_public: false,
-        tasksCount: 5,
-        subsCount: 5,
-        slug: "7"
-    },
-    {
-        id: 8,
-        creatorId: 2,
-        label: "Канал 2.4",
-        price: null,
-        brief_description: "",
-        description: "",
-        is_public: false,
-        tasksCount: 5,
-        subsCount: 5,
-        slug: "8"
-    },
-    {
-        id: 9,
-        creatorId: 3,
-        label: "Канал 3.1",
-        price: null,
-        brief_description: "",
-        description: "",
-        is_public: true,
-        tasksCount: 5,
-        subsCount: 5,
-        slug: "9"
-    },
-    {
-        id: 10,
-        creatorId: 3,
-        label: "Канал 3.2",
-        price: null,
-        brief_description: "",
-        description: "",
-        is_public: true,
-        tasksCount: 5,
-        subsCount: 5,
-        slug: "10"
-    },
-    {
-        id: 11,
-        creatorId: 1,
-        label: "Канал 3.3",
-        price: null,
-        brief_description: "",
-        description: "",
-        is_public: false,
-        tasksCount: 5,
-        subsCount: 5,
-        slug: "11"
-    },
-    {
-        id: 12,
-        creatorId: 3,
-        label: "Канал 3.4",
-        price: null,
-        brief_description: "",
-        description: "",
-        is_public: false,
-        tasksCount: 5,
-        subsCount: 5,
-        slug: "12"
-    },
-]
-
-const TASKS: Array<TaskStruct> = [
-    {
-        id: 1,
-        title: "Задание 1.1",
-        brief_description: "Краткое описание",
-        detailed_description: "Полное описание",
-        avatar: "",
-        visibile: true,
-        creatorId: 1,
-        channelId: 1,
-        date_created: "20.03.2024 13:04:56",
-        slug: "1",
-        identifier: "0000001",
-        is_feedback: true,
-        attempts: 2,
-        upload: "",
-        questionCount: 10
-    },
-    {
-        id: 2,
-        title: "Задание 1.2",
-        brief_description: "Краткое описание",
-        detailed_description: "Полное описание",
-        avatar: "",
-        visibile: true,
-        creatorId: 2,
-        channelId: 2,
-        date_created: "20.03.2024 13:04:56",
-        slug: "2",
-        identifier: "0000002",
-        is_feedback: true,
-        attempts: 2,
-        upload: "",
-        questionCount: 10
-    },
-    {
-        id: 3,
-        title: "Задание 1.3",
-        brief_description: "Краткое описание",
-        detailed_description: "Полное описание",
-        avatar: "",
-        visibile: true,
-        creatorId: 3,
-        channelId: 3,
-        date_created: "20.03.2024 13:04:56",
-        slug: "3",
-        identifier: "0000003",
-        is_feedback: true,
-        attempts: 2,
-        upload: "",
-        questionCount: 10
-    },
-]
-
-// const QUESTIONS: Array<QuestionStruct> = [
-//     {
-//         id: 1,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 1
-//     },
-//     {
-//         id: 2,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 1
-//     },
-//     {
-//         id: 3,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 1
-//     },
-//     {
-//         id: 4,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 1
-//     },
-//     {
-//         id: 5,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 1
-//     },
-//     {
-//         id: 6,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 1
-//     },
-//     {
-//         id: 7,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 2
-//     },
-//     {
-//         id: 8,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 2
-//     },
-//     {
-//         id: 9,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 2
-//     },
-//     {
-//         id: 10,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 2
-//     },
-//     {
-//         id: 11,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 2
-//     },
-//     {
-//         id: 12,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 2
-//     },
-//     {
-//         id: 13,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 2
-//     },
-//     {
-//         id: 14,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 3
-//     },
-//     {
-//         id: 15,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 3
-//     },
-//     {
-//         id: 16,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 3
-//     },
-//     {
-//         id: 17,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 3
-//     },
-//     {
-//         id: 18,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 3
-//     },
-//     {
-//         id: 19,
-//         label: "Название вопроса название вопроса название вопроса название вопроса название вопроса",
-//         taskId: 3
-//     }
-// ]
-
-export { USERS, PROFILES, TASKS, CHANNELS, CURRENT_USER }
-
-export async function seedTempDB(): Promise<void> {
-    const database = new TempDB()
-    await database.put('users', USERS)
-    await database.put('profiles', PROFILES)
-    await database.put('tasks', TASKS)
-    await database.put('channels', CHANNELS)
-    await database.put('answers', [])
-    await database.put('variants', [])
+function generateChannels(count: number): ChannelStruct[] {
+    const output = []
+    for (let i = 0; i < count; i++) {
+        output.push({
+            id: i,
+            creatorId: i,
+            label: `Канал ${i}`,
+            price: null,
+            brief_description: "Краткое описание",
+            description: "Полное описание",
+            is_public: true,
+            slug: String(i)
+        })
+    }
+    return output
 }
 
+function generateUsers(count: number): UserStruct[] {
+    const output = []
+    for (let i = 0; i < count; i++) {
+        output.push({
+            id: i,
+            nickname: `Пользователь ${i}`,
+            email: `example@email.com`,
+            status: `Статус ${i}`,
+            is_staff: false,
+            is_active: i % 2 == 0
+        })
+    }
+    return output
+}
+
+function generateProfiles(count: number): ProfileStruct[] {
+    const output = []
+    for (let i = 0; i < count; i++) {
+        output.push({
+            id: i,
+            first_name: "Сергей",
+            last_name: "Кочиев",
+            avatar: "",
+            slug: String(i),
+            visible: i % 2 == 1,
+            creation_date: (new Date()).toUTCString(),
+            userId: i
+        })
+    }
+    return output
+}
+
+function generateData(count: number): [UserStruct[], ProfileStruct[], TaskStruct[], ChannelStruct[]] {
+    return [
+        generateUsers(count),
+        generateProfiles(count),
+        genereteTasks(count),
+        generateChannels(count)
+    ]
+}
+
+export const QUESTIONS: Array<QuestionStruct> = [
+    {
+        label: "Вопрос 1",
+        isText: false
+    },
+    {
+        label: "Вопрос 2",
+        isText: false
+    },
+    {
+        label: "Вопрос 3",
+        isText: true
+    },
+    {
+        label: "Вопрос 4",
+        isText: false
+    },
+    {
+        label: "Вопрос 5",
+        isText: true
+    },
+]
+
+export const VARIANTS: Array<VariantStruct> = [
+    {
+        label: "Вариант 1",
+        correct: false
+    },
+    {
+        label: "Вариант 2",
+        correct: false
+    },
+    {
+        label: "Вариант 4",
+        correct: true
+    },
+    {
+        label: "Вариант 5",
+        correct: true
+    },
+    {
+        label: "Правильный ответ",
+        correct: true
+    },
+]
+
+export const ANSWERS: any[] = []
+export const [ USERS, PROFILES, TASKS, CHANNELS ] = generateData(20)
+export const CURRENT_USER: UserStruct = USERS[0]

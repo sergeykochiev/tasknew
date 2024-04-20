@@ -1,6 +1,5 @@
 "use client"
 
-import { updateRecord } from "@/common/helpers";
 import { CHANNELS, CURRENT_USER } from "@/common/temp-data";
 import Button from "@/components/Button";
 import LabeledCheckboxBar from "@/components/LabeledCheckboxBar";
@@ -11,7 +10,6 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useId } from "react";
 
 export default function Page() {
-    const router = useRouter()
     const onSubmit = async (e: FormEvent) => {
         e.preventDefault()
         const data = new FormData(e.target as HTMLFormElement)
@@ -27,10 +25,12 @@ export default function Page() {
             slug: String(CHANNELS[CHANNELS.length - 1].id + 1),
             price: 0
         }
-        await updateRecord("channels", newChannel)
+        CHANNELS.push(newChannel)
         router.push(`/channels/${newChannel.slug}`)
     }
-    const formId = useId()
+    
+    const router = useRouter()
+    const formId = useId()    
 
     return ( <>
         <PageHeaderEvo>

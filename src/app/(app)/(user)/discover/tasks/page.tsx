@@ -1,30 +1,28 @@
 "use client"
 
-import { TempDB } from "@/common/helpers";
+import { TASKS } from "@/common/temp-data";
 import TaskStruct from "@/common/types/data-sctructures/task";
 import ContentContainer from "@/components/ContentContainer";
+import Pagination from "@/components/Pagination";
 import TaskTile from "@/components/Tile/Task";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 export default function Page() {
-    const [search, setSearch] = useState<string>("")
-    const [data, setData] = useState<Array<TaskStruct>>([])
-    const router = useRouter()
-    useEffect(() => {
-        console.log("dupa")
-        const fetchTasks = async () => {
-            const db = new TempDB()
-            const tasks = (await db.get("tasks")) as Array<TaskStruct>
-            setData(tasks.filter(e => e.title.includes(search) && e.visibile))
-        }
-        if (search.length == 0) return
-        fetchTasks()
-    }, [search])
+    const pageGet = () => query.get("page") ? Number(query.get("page")) : 1
     const onClick = (data: TaskStruct) => {
         router.push(`/tasks/${data.slug}`)
     }
-    return (
-        <ContentContainer searchState={[search, setSearch]} data={data} Component={TaskTile} searchableInitially={true} onClick={onClick}/>
-    )   
+    const query = useSearchParams()
+    const [page, setPage] = useState<number>(pageGet())
+    const router = useRouter()
+    const [search, setSearch] = useState<string>("")
+
+    const channels = TASKS.slice((page - 1) * 8, (page - 1) * 8 + 8)
+    const data = channels.filter(e => e.title.includes(search))
+    
+    return ( <>
+        <ContentContainer searchState={[search, setSearch]} data={search ? data : []} Component={TaskTile} searchableInitially={true} onClick={onClick}/>
+        {search && data.length > 0 && <Pagination page={page} lastPage={data.length < 8} onPageChange={(page) => setPage(page)}/>}
+    </> )
 }

@@ -1,10 +1,6 @@
 "use client"
 
-import { TempDB, updateRecord } from "@/common/helpers";
-import QuestionStruct from "@/common/types/data-sctructures/question";
-import AnswerOrQuestionType from "@/common/types/data-sctructures/question/answerOrQuestionType";
-import VariantStruct from "@/common/types/data-sctructures/question/variant";
-import TaskStruct from "@/common/types/data-sctructures/task";
+import VariantStruct from "@/common/types/data-sctructures/variant";
 import Button from "@/components/Button";
 import ButtonGroup from "@/components/ButtonGroup";
 import LabeledCheckboxBar from "@/components/LabeledCheckboxBar";
@@ -15,6 +11,7 @@ import TextArea from "@/components/TextArea";
 import VariantTIle from "@/components/Tile/Variant";
 import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
+import { QUESTIONS } from "@/common/temp-data";
 
 export default function Page({ params }: { params: { slug: string }}) {
     const router = useRouter()
@@ -25,50 +22,23 @@ export default function Page({ params }: { params: { slug: string }}) {
     const [questionLabel, setQuestionLabel] = useState<string>("")
     const [textareaVariant, setTextareaVariant] = useState<string>("")
     const onSubmit = async () => {
-        const evaluateQuestionType = (): AnswerOrQuestionType => {
-            if (isTextarea) {
-                if (isValidated) return "validatedtext"
-                return "text"
-            }
-            if (variants.filter(e => e.correct).length > 1) return "multivariant"
-            return "singlevariant"
-        }
-        const db = new TempDB()
-        const questions = await db.get("questions")
-        const questionId = questions[questions.length - 1].id + 1
-        const newQuestion: QuestionStruct = {
-            id: questionId,
+        QUESTIONS.push({
             label: questionLabel,
-            taskId: (await db.get("tasks")).find((e: TaskStruct) => e.slug == params.slug).id,
-            questionType: evaluateQuestionType()
-        }
-        
-        await updateRecord("questions", newQuestion)
-        if (isTextarea && isValidated) await updateRecord("variants", {
-            answer: textareaVariant,
-            correct: true
+            isText: isTextarea
         })
-        else if (isTextarea) {}
-        else {
-            for (let i = 0; i < variants.length; i++) {
-                variants[i].questionId = questionId
-                await updateRecord("variants", variants[i])
-            }
-        }
 
         router.push(`/tasks/${params.slug}/questions`)
     }
     const addVariant = () => {
         const l = variants.length
         if (l >= 10) return
-        const newVariant = {
+        const newVariant: VariantStruct = {
             label: "Вариант",
-            correct: false,
-            questionId: 0
+            correct: false
         }
-        if (!variants[l + 1]) variants.push(newVariant)
-        else variants[l + 1] = newVariant
+        variants.push(newVariant)
         setVariants([...variants])
+        console.log(variants)
     }
 
     const updateVariant = (index: number, correct: boolean, label: string) => {
@@ -88,11 +58,10 @@ export default function Page({ params }: { params: { slug: string }}) {
             <ButtonGroup>
                 {!isTextarea && <Button onClick={addVariant}>Добавить вариант</Button>}
                 <Button color="blue" onClick={onSubmit}>Создать</Button>
-                <Button onClick={() => console.log(JSON.stringify(variants))}>Вывести варианты</Button>
             </ButtonGroup>
         </PageHeaderEvo>
         <div className="w-[848px] flex flex-col gap-[16px] items-end" id={formId}>
-            <TextArea valueState={[questionLabel, setQuestionLabel]} placeholder="Название" name="label" required small/>
+            <TextArea valueState={[questionLabel, setQuestionLabel]} placeholder="Текст вопроса" name="label" required/>
             <LabeledCheckboxBar checkedState={[isTextarea, setTextarea]} label="Развернутый ответ"/>
             {isTextarea ? <>
                 <LabeledCheckboxBar checkedState={[isValidated, setIsValidated]} label="Проверяется автоматически"/>

@@ -1,33 +1,31 @@
 "use client"
 
-import { TempDB } from "@/common/helpers";
-import ChannelStruct from "@/common/types/data-sctructures/channel"
+import { CHANNELS, TASKS } from "@/common/temp-data"
 import TaskStruct from "@/common/types/data-sctructures/task"
 import ContentContainer from "@/components/ContentContainer"
 import NoDataPlaceholder from "@/components/NoDataPlaceholder"
+import Pagination from "@/components/Pagination"
 import TaskTile from "@/components/Tile/Task"
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react"
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react"
 
 export default function Page({ params }: { params: { slug: string }}) {
-    useEffect(() => {
-        const fetchChannels = async () => {
-            const db = new TempDB()
-            const channels = (await db.get("channels")) as Array<ChannelStruct>
-            const currentChannel = channels.find(e => e.slug == params.slug)
-            if (!currentChannel) return null
-            const tasks = (await db.get("tasks")) as Array<TaskStruct>
-            setTasks(tasks.filter(e => e.channelId == currentChannel.id))
-        }
-        fetchChannels()
-    }, [])
-    const [tasks, setTasks] = useState<Array<TaskStruct>>()
-    const router = useRouter()
-    if (!tasks) return <NoDataPlaceholder/>
+    const pageGet = () => query.get("page") ? Number(query.get("page")) : 1
     const onClick = (data: TaskStruct) => {
         router.push(`/tasks/${data.slug}`)
     }
-    return (
-        <ContentContainer searchable={false} data={tasks} Component={TaskTile} onClick={onClick}/> 
+
+    const router = useRouter()
+    const query = useSearchParams()
+    const [page, setPage] = useState<number>(pageGet())
+
+    const channel = CHANNELS.find(e => e.slug == params.slug)
+    if (!channel) return <NoDataPlaceholder/>
+    const tasks = TASKS.filter(e => e.channelId == channel.id).slice((page - 1) * 8, (page - 1) * 8 + 8)
+
+    return ( <>
+        <ContentContainer searchable={false} data={tasks} Component={TaskTile} onClick={onClick}/>
+        {tasks.length > 0 && <Pagination page={page} lastPage={tasks.length < 8} onPageChange={(page) => setPage(page)}/>}
+    </>
     )
 }

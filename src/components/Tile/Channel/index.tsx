@@ -30,11 +30,11 @@ const ChannelTile: FC<ChannelTileProps> = ({
                     </div>
                     -
                     <div>
-                        {data.tasksCount} заданий
+                        10 заданий
                     </div>
                     -
                     <div>
-                        {data.subsCount} подписчиков
+                        10 подписчиков
                     </div>
                 </div>
             </div>

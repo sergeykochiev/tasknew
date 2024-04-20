@@ -1,45 +1,41 @@
 "use client"
 
-import { TempDB, updateRecord } from "@/common/helpers";
-import { CHANNELS, CURRENT_USER, TASKS } from "@/common/temp-data";
-import ChannelStruct from "@/common/types/data-sctructures/channel";
-import TaskStruct from "@/common/types/data-sctructures/task";
+import { CURRENT_USER, TASKS } from "@/common/temp-data";
 import Button from "@/components/Button";
 import InputField from "@/components/InputField";
 import LabeledCheckboxBar from "@/components/LabeledCheckboxBar";
 import PageHeaderEvo from "@/components/PageHeaderEvo";
 import HeadingTab from "@/components/PageHeaderEvo/HeadingTab";
 import TextArea from "@/components/TextArea";
-import { Channel } from "diagnostics_channel";
 import { useRouter } from "next/navigation";
 import { FormEvent, useId } from "react";
 import { uid } from "uid";
 
 export default function Page() {
-    const router = useRouter()
     const onSubmit = async (e: FormEvent) => {
         e.preventDefault()
         const data = new FormData(e.target as HTMLFormElement)
-        const newTask = {
-            id: TASKS[TASKS.length - 1].id + 1,
+        const id = TASKS.length
+        const slug = String(id)
+        TASKS.push({
+            id: id,
             creatorId: CURRENT_USER.id,
             brief_description: data.get("brief_description")! as string,
             detailed_description: data.get("detailed_description")! as string,
             title: data.get("title")! as string,
-            slug: String(TASKS[TASKS.length - 1].id + 1),
+            slug: slug,
             avatar: "",
             visibile: data.get("visible") == "true" ? true : false,
             channelId: undefined,
             date_created: Date.now().toString(),
-            identifier: uid(),
+            identifier: 1000000 + id,
             is_feedback: data.get("is_feedback") == "true" ? true : false,
             attempts: Number(data.get("attempts")! as string),
-            upload: "",
-            questionCount: 0
-        }
-        await updateRecord("tasks", newTask)
-        router.push(`/tasks/${newTask.slug}`)
+        })
+        router.push(`/tasks/${slug}`)
     }
+
+    const router = useRouter()
     const formId = useId()
 
     return ( <>

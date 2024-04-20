@@ -21,7 +21,7 @@ const Button: FC<ButtonProps> = ({
         apply2pxHover(id)
     }, [])
     return (
-        <button id={id} className={`whitespace-nowrap group relative overflow-hidden m-0 transition-all button text-[14px] h-[41px] px-[24px] flex items-center justify-center rounded-[16px] ${color} text-bg-dark z-10 ${className!}`} onClick={() => onClick && onClick} {...props}>
+        <button id={id} className={`whitespace-nowrap group relative overflow-hidden m-0 transition-all button text-[14px] h-[41px] px-[24px] flex items-center justify-center rounded-[16px] ${color} text-bg-dark z-10 ${className!}`} onClick={onClick} {...props}>
             {children}
         </button>
     )

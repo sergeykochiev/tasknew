@@ -1,10 +1,10 @@
 "use client"
 
 import { FC } from "react"
-import { usePathname, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import HeaderTab from "../../bones/Tab"
-import PATH_WITH_DARK_THEME from "@/common/const/light-paths"
 import { sourceCodePro } from "@/common/fonts"
+import { CURRENT_USER } from "@/common/temp-data"
 
 const Header: FC = () => {
     const router = useRouter()
@@ -21,7 +21,7 @@ const Header: FC = () => {
             <span className="font-bold text-[24px] tracking-[0.25em] cursor-pointer select-none" onClick={() => router.push('/home')}>TASK</span>
             <div className="flex gap-0 h-full">
                 <HeaderTab light={light} redirectTo="/subscribtions" router={router}>Подписки</HeaderTab>
-                <HeaderTab light={light} redirectTo="/profile" router={router}>Профиль</HeaderTab>
+                <HeaderTab light={light} redirectTo={`/profile`} router={router}>Профиль</HeaderTab>
             </div>
         </div>
     </div>

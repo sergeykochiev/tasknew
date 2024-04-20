@@ -10,7 +10,7 @@ const DummyDiv: FC<{ right?: boolean, light: boolean }> = ({ right = false, ligh
     </div>
 }
 
-const HeaderTab: FC<{ children: string, redirectTo?: string, router?: AppRouterInstance, light: boolean }> = ({ children, redirectTo, router, light }) => {
+const HeaderTab: FC<{ children: string, redirectTo: string, router?: AppRouterInstance, light: boolean }> = ({ children, redirectTo, router, light }) => {
     const onChange = () => {
         if (redirectTo && router) {
             router.push(redirectTo)
@@ -18,7 +18,7 @@ const HeaderTab: FC<{ children: string, redirectTo?: string, router?: AppRouterI
     }
 
     const currentPath = usePathname()
-    const isCurrent = currentPath.split('/')[1] == redirectTo!.split('/')[1]
+    const isCurrent = currentPath.split("/")[1] == redirectTo.split("/")[1]
 
     return <div className="flex group">
         <DummyDiv light={light} right={true} />

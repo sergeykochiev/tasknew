@@ -1,19 +1,6 @@
-import AnswerOrQuestionType from "./answerOrQuestionType";
-
 class QuestionStruct {
     constructor(
-        public id: number,
-        public taskId: number,
         public label: string,
-        public questionType: AnswerOrQuestionType
+        public isText: boolean
     ) {}
 }
-
-// class QuestionStruct {
-//     id: number
-//     taskId: number
-//     label: string
-//     description: string
-// }
-
-export default QuestionStruct

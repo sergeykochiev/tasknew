@@ -1,30 +1,28 @@
 "use client"
 
-import { TempDB } from "@/common/helpers";
+import { CHANNELS, CURRENT_USER } from "@/common/temp-data";
 import ChannelStruct from "@/common/types/data-sctructures/channel";
 import ContentContainer from "@/components/ContentContainer";
+import Pagination from "@/components/Pagination";
 import ChannelTile from "@/components/Tile/Channel";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 export default function Page() {
-    const [search, setSearch] = useState<string>("")
-    const [data, setData] = useState<Array<ChannelStruct>>([])
-    const router = useRouter()
-    useEffect(() => {
-        console.log("dupa")
-        const fetchChannels = async () => {
-            const db = new TempDB()
-            const channels = (await db.get("channels")) as Array<ChannelStruct>
-            setData(channels.filter(e => e.label.includes(search)))
-        }
-        if (search.length == 0) return
-        fetchChannels()
-    }, [search])
+    const pageGet = () => query.get("page") ? Number(query.get("page")) : 1
     const onClick = (data: ChannelStruct) => {
         router.push(`/channels/${data.slug}`)
     }
-    return (
-        <ContentContainer searchState={[search, setSearch]} data={data} Component={ChannelTile} searchableInitially={true} onClick={onClick}/>
-    )   
+    const query = useSearchParams()
+    const [page, setPage] = useState<number>(pageGet())
+    const router = useRouter()
+    const [search, setSearch] = useState<string>("")
+
+    const channels = CHANNELS.slice((page - 1) * 8, (page - 1) * 8 + 8)
+    const data = channels.filter(e => e.label.includes(search))
+    
+    return ( <>
+        <ContentContainer searchState={[search, setSearch]} data={search ? data : []} Component={ChannelTile} searchableInitially={true} onClick={onClick}/>
+        {search && data.length > 0 && <Pagination page={page} lastPage={data.length < 8} onPageChange={(page) => setPage(page)}/>}
+    </> )   
 }

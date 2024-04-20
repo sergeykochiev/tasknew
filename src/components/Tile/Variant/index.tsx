@@ -1,7 +1,7 @@
 "use client"
 
 import { ListEntryTileComponentProps } from "@/common/types/components/tile-list-entry"
-import VariantStruct from "@/common/types/data-sctructures/question/variant"
+import VariantStruct from "@/common/types/data-sctructures/variant"
 import DefButton from "@/components/Button"
 import Checkbox from "@/components/Checkbox"
 import { FC, useEffect, useState } from "react"

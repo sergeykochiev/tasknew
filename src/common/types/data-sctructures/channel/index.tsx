@@ -7,8 +7,6 @@ class ChannelStruct {
         public label: string,
         public price: number | null,
         public is_public: boolean,
-        public tasksCount: number,
-        public subsCount: number,
         public slug: string
     ) {}
 }
