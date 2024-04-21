@@ -1,6 +1,4 @@
 import Header from "@/components/Header/header/full";
-import PageHeader from "@/components/PageHeader/header/Blank";
-import FullPageHeader from "@/components/PageHeader/header/Full";
 
 export default function Layout({
     children,
