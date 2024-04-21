@@ -23,7 +23,7 @@ export default function ContentContainer<T extends { id: number }>({ data, Compo
     
     return (
         <div className="flex flex-col gap-[16px] items-center">
-            <div className="w-[848px]">{searchable && (searchableInitially || data) && <InputField value={searchState![0]} setValue={searchState![1]} placeholder="Поиск"></InputField>}</div>
+            <div className="w-[848px]">{searchable && (searchableInitially || data) && <InputField value={searchState![0]} onChange={e => searchState![1](e.target.value)} placeholder="Поиск"></InputField>}</div>
             {data && data.length > 0 ? <div className="flex gap-[16px]">
                 <BackgroundGridSide chance={data ? (data.length / 8) : 0} toRight={false}/>
                 <div className="grid gap-[16px] grid-rows-4x128 grid-cols-6x128">

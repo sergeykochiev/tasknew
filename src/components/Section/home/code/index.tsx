@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 
 const CodeInputSection: FC = () => {
-    const [code, setCode] = useState<string>('')
+    const [code, setCode] = useState<number>()
     const router = useRouter()
 
     const onclick = () => {
@@ -26,7 +26,7 @@ const CodeInputSection: FC = () => {
                     У вас уже есть код?
                 </div>
                 <div className="flex gap-[16px]">
-                    <div className="w-[272px]"><DefInput placeholder="Код" value={code} setValue={setCode} light={false}/></div>
+                    <div className="w-[272px]"><DefInput placeholder="Код" type="number" value={code} onChange={e => setCode(Number(e.target.value))} light={false}/></div>
                     <div className="w-[128px]"><DefButton color="blue" onClick={onclick}>Найти</DefButton></div>
                 </div>
             </div>
