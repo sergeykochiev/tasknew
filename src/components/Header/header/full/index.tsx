@@ -4,7 +4,6 @@ import { FC } from "react"
 import { useRouter } from "next/navigation"
 import HeaderTab from "../../bones/Tab"
 import { sourceCodePro } from "@/common/fonts"
-import { CURRENT_USER } from "@/common/temp-data"
 
 const Header: FC = () => {
     const router = useRouter()
