@@ -13,8 +13,8 @@ const config: Config = {
       },
       keyframes: {
         "flip": {
-          "0%": { transform: "rotateX(0deg)" },
-          "100%": { transform: "rotateX(180deg)" }
+          "0%": { transform: "rotate3d(0)" },
+          "100%": { transform: "rotate3d(180)" }
         },
       },
       backgroundImage: {
@@ -26,7 +26,7 @@ const config: Config = {
         smscreen: "100svh"
       },
       gridTemplateColumns: {
-        "side": "repeat(3, 128px)",
+        "3x128": "repeat(3, 128px)",
         "6x128": "repeat(6, 128px)",
         "12x128": "repeat(12, 128px)",
       },
@@ -47,6 +47,7 @@ const config: Config = {
         "tile-gray": "#E2E2E2",
         "main-gray": "#D9D9D9",
         "tile-red": "#F34D4D",
+        "blanktile": "#353535",
         "tile-dark-gray": "363636"
       },
     },

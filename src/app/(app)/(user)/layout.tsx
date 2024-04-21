@@ -7,11 +7,10 @@ export default function Layout({
   }: Readonly<{
     children: React.ReactNode;
   }>) {
-    return (
-        <div >
-            <Header />
-            {children}
-        </div>
+    return (<>
+      <Header />
+      <div className="flex flex-col items-center bg-bg-dark min-h-smscreen">{children}</div>
+    </>      
     );
   }
   

@@ -87,23 +87,28 @@ function generateData(count: number): [UserStruct[], ProfileStruct[], TaskStruct
 export const QUESTIONS: Array<QuestionStruct> = [
     {
         label: "Вопрос 1",
-        isText: false
+        isText: false,
+        id: 1
     },
     {
         label: "Вопрос 2",
-        isText: false
+        isText: false,
+        id: 2
     },
     {
         label: "Вопрос 3",
-        isText: true
+        isText: true,
+        id: 3
     },
     {
         label: "Вопрос 4",
-        isText: false
+        isText: false,
+        id: 4
     },
     {
         label: "Вопрос 5",
-        isText: true
+        isText: true,
+        id: 5
     },
 ]
 

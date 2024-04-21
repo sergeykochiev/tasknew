@@ -1,19 +1,24 @@
 "use client"
 
-import React, { FC, useState } from "react";
+import React, { useState, FC, InputHTMLAttributes, useId, useEffect } from "react";
 
-const BlankTile: FC<{
-    size?: "1x1" | "2x2" | "3x1" | "2x1",
-    visible?: boolean
+interface BlankTileProps extends InputHTMLAttributes<HTMLInputElement> {
+    span?: "1x1" | "2x2" | "3x1" | "2x1",
     light: boolean
-}> = ({
-    size = "1x1",
-    visible = true,
-    light
-}) => {
-    const [v, setV] = useState<boolean>(visible)
+    defaultChecked: boolean
+} 
 
-    return <div className={`flex flex-col gap-[8px] ${"tile-"+size} ${light ? "outline-white" : 'outline-bg-dark'} ${v ? "bg-transparent" : `${light ? "bg-white" : "bg-bg-dark"}`} z-30 outline-[9px] outline transition-all`} onMouseEnter={() => setV(!v)} />
+const BlankTile: FC<BlankTileProps> = ({
+    span = "1x1",
+    light,
+    defaultChecked
+}) => {
+    const [checked, setChecked] = useState<boolean>(defaultChecked)
+    const id = useId()
+    
+    return <label onMouseEnter={() => setChecked(!checked)} id={id} className={`bg-bg-dark has-[input:checked]:bg-transparent blanktile flex flex-col gap-[8px] ${"tile-"+span} z-30 outline-[9px] outline outline-bg-dark transition-all`}>
+        <input type="checkbox" className="hidden absolute" checked={checked} readOnly/>
+    </label>
 }
 
 export default BlankTile

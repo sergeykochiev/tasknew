@@ -30,7 +30,6 @@ export default function Template({
                 <ButtonGroup>
                     <LinkHeadingTab href={`/tasks/${params.slug}`} name={id}>{"Описание " + `"${task.title}"`}</LinkHeadingTab>
                     <LinkHeadingTab href={`/tasks/${params.slug}/questions`} name={id}>Вопросы</LinkHeadingTab>
-                    {!isMine && <LinkHeadingTab href={`/tasks/${params.slug}/tries`} name={id}>Вопросы</LinkHeadingTab>}
                 </ButtonGroup>
                 <ButtonGroup>
                     {!isMine ? <>

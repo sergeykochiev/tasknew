@@ -144,3 +144,45 @@ div.tile-content.gray.tile-bigtext {
 .tile-center {
   @apply justify-center items-center
 }
+.blanktile {
+  perspective: 1000px;
+}
+.tile-content:hover::before {
+  animation: dupa 0.4s ease-out;
+}
+.tile-content {
+  position: relative;
+  overflow: hidden;
+}
+.tile-content::before {
+  z-index: 300;
+  top: -20%;
+  rotate: 10deg;
+  content: "";
+  left: -50%;
+  position: absolute;
+  height: 150%;
+  width: 40%;
+  background-color: white
+}
+.tile:has(.tile) .tile .tile-content::before {
+  content: none
+}
+.tile:has(.tile) .tile .tile-content {
+  animation: none;
+}
+.tile-inactive::before {
+  content: none;
+}
+
+@keyframes dupa {
+  from {
+    rotate: 10deg;
+    width: 40%;
+    left: -25%;
+  } to {
+    rotate: 5deg;
+    width: 5%;
+    left: 100%
+  }
+}

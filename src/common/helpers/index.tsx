@@ -17,7 +17,7 @@ export function createContainerBlankMap(count: number, maxSize: number, maxConta
     }
     while (count < maxContainerCount) {
         const colSpan = getColSpan(count)
-        mapArray.push(<div key={count} className={`${"col-span-"+colSpan} row-span-1 rounded-[16px] bg-main-dark`}></div>)
+        mapArray.push(colSpan)
         count = count + colSpan
     }
     return mapArray

@@ -8,15 +8,14 @@ export default function Layout({
     children: React.ReactNode;
   }>) {
     const id = useId()
-    return (
-        <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
-            <PageHeaderEvo>
-                <LinkHeadingTab href="/discover/tasks" className="w-full" name={id}>Найти задания</LinkHeadingTab>
-                <LinkHeadingTab href="/discover/channels" className="w-full" name={id}>Найти каналы</LinkHeadingTab>
-                <LinkHeadingTab href="/discover/users" className="w-full" name={id}>Найти пользователей</LinkHeadingTab>
-            </PageHeaderEvo>
-            {children}
-        </main>
+    return (<>
+      <PageHeaderEvo>
+        <LinkHeadingTab href="/discover/tasks" className="w-full" name={id}>Найти задания</LinkHeadingTab>
+        <LinkHeadingTab href="/discover/channels" className="w-full" name={id}>Найти каналы</LinkHeadingTab>
+        <LinkHeadingTab href="/discover/users" className="w-full" name={id}>Найти пользователей</LinkHeadingTab>
+      </PageHeaderEvo>
+      {children}
+    </> 
     );
   }
   

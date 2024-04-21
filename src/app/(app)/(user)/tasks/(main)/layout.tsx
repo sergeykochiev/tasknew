@@ -10,21 +10,20 @@ export default function Layout({
     children: React.ReactNode;
   }>) {
     const id = useId()
-    return (
-        <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
-            <PageHeaderEvo>
-              <ButtonGroup>
-                <LinkHeadingTab href="/tasks/created" name={id}>Созданные</LinkHeadingTab>
-                <LinkHeadingTab href="/tasks/solved" name={id}>Решенные</LinkHeadingTab>
-                <LinkHeadingTab href="/tasks/favorites" name={id}>Избранное</LinkHeadingTab>
-              </ButtonGroup>
-              <ButtonGroup>
-                <LinkButton href="/discover/tasks">Найти еще</LinkButton>
-                <LinkButton href="/tasks/create">Создать</LinkButton>
-              </ButtonGroup>
-            </PageHeaderEvo>
-            {children}
-        </main>
-    );
+    return ( <>
+      <PageHeaderEvo>
+        <ButtonGroup>
+          <LinkHeadingTab href="/tasks/created" name={id}>Созданные</LinkHeadingTab>
+          <LinkHeadingTab href="/tasks/solved" name={id}>Решенные</LinkHeadingTab>
+          <LinkHeadingTab href="/tasks/favorites" name={id}>Избранное</LinkHeadingTab>
+        </ButtonGroup>
+        <ButtonGroup>
+          <LinkButton href="/discover/tasks">Найти еще</LinkButton>
+          <LinkButton href="/tasks/create">Создать</LinkButton>
+        </ButtonGroup>
+      </PageHeaderEvo>
+      {children}
+    </>       
+    )
   }
   

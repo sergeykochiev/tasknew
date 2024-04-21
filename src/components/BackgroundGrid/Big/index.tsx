@@ -15,13 +15,13 @@ const BackgroundGridBig: FC<BackgroundGridProps> = ({
     for (let i = 0; i < numberOfTiles; i++) {
         mappedArray[i] = Math.random() > 0.35
     }
-    const renderBlankTiles = mappedArray.map(e => <BlankTile light={light} visible={e} key={uid()}></BlankTile>)
+    const renderBlankTiles = mappedArray.map(e => <BlankTile light={light} defaultChecked={e} key={uid()}></BlankTile>)
     return (
         <div className={`mt-[140px] flex justify-center absolute z-0 overflow-hidden ${className}`}>
             <div className={`grid auto-rows-[128px] gap-[16px] grid-cols-12x128 z-10`}>
                 {renderBlankTiles}
             </div>
-            <div className={`absolute w-[2350px] mt-[-1175px] aspect-square bg-gradient-radial ${light ? "from-tile-gray via-white to-white " : "from-[#3e3e3e] via-bg-dark to-bg-dark"} z-0`}></div>
+            <div className={`absolute w-[2350px] mt-[-1175px] aspect-square bg-gradient-radial ${light ? "from-tile-gray via-white to-white " : "from-blanktile via-bg-dark to-bg-dark"} z-0`}></div>
         </div>
     )
 }

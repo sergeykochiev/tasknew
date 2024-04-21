@@ -7,13 +7,12 @@ export default function Layout({
   }: Readonly<{
     children: React.ReactNode;
   }>) {
-    return (
-        <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
-            <PageHeaderEvo>
-              <HeadingTab>Добавление задания</HeadingTab>
-              <LinkButton href="/tasks/create">Создать задание</LinkButton>
-            </PageHeaderEvo>
-            {children}
-        </main>
+    return (<>
+      <PageHeaderEvo>
+        <HeadingTab>Добавление задания</HeadingTab>
+        <LinkButton href="/tasks/create">Создать задание</LinkButton>
+      </PageHeaderEvo>
+      {children}
+    </>
     );
   }

@@ -7,14 +7,13 @@ export default function Layout({
   }: Readonly<{
     children: React.ReactNode;
   }>) {
-    return (
-        <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
-            <PageHeaderEvo>
-                <HeadingTab>Подписки на пользователей</HeadingTab>
-                <LinkButton href="/discover/users">Найти еще</LinkButton>
-            </PageHeaderEvo>
-            {children}
-        </main>
+    return (<>
+      <PageHeaderEvo>
+        <HeadingTab>Подписки на пользователей</HeadingTab>
+        <LinkButton href="/discover/users">Найти еще</LinkButton>
+      </PageHeaderEvo>
+      {children}
+    </>
     );
   }
   

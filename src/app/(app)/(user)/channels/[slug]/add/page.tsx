@@ -1,14 +1,13 @@
 "use client"
 
-import { CHANNELS, CURRENT_USER, TASKS } from "@/common/temp-data";
+import { CHANNELS, TASKS } from "@/common/temp-data";
 import TaskStruct from "@/common/types/data-sctructures/task";
 import TaskTile from "@/components/Tile/Task";
 import ContentContainer from "@/components/ContentContainer";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import NoDataPlaceholder from "@/components/NoDataPlaceholder";
 import Pagination from "@/components/Pagination";
 import { useRouter, useSearchParams } from "next/navigation";
-import ChannelStruct from "@/common/types/data-sctructures/channel";
 
 export default function Page({ params }: { params: { slug: string }}) {
     const pageGet = () => query.get("page") ? Number(query.get("page")) : 1

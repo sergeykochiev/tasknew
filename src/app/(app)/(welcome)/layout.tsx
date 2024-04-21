@@ -5,11 +5,10 @@ export default function Layout({
   }: Readonly<{
     children: React.ReactNode;
   }>) {
-    return (
-        <div>
-            <BlankHeader />
-            {children}
-        </div>
+    return (<>
+      <BlankHeader />
+      {children}
+    </>   
     );
   }
   

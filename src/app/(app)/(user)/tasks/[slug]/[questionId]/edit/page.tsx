@@ -11,23 +11,29 @@ import TextArea from "@/components/TextArea";
 import VariantTIle from "@/components/Tile/Variant";
 import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
-import { QUESTIONS } from "@/common/temp-data";
+import { QUESTIONS, VARIANTS } from "@/common/temp-data";
 
-export default function Page({ params }: { params: { slug: string }}) {
+export default function Page({ params }: { params: { slug: string, questionId: string }}) {
     const router = useRouter()
     const formId = useId()
-    const [variants, setVariants] = useState<Array<VariantStruct>>([])
-    const [isTextarea, setTextarea] = useState<boolean>(false)
-    const [isValidated, setIsValidated] = useState<boolean>(false)
-    const [questionLabel, setQuestionLabel] = useState<string>("")
-    const [textareaVariant, setTextareaVariant] = useState<string>("")
+    const questionIDX = QUESTIONS.findIndex(e => e.id == Number(params.questionId))
+    const question = QUESTIONS[questionIDX]
+    if (!question) return
+    const [isTextarea, setTextarea] = useState<boolean>(question.isText)
+    const [variants, setVariants] = useState<Array<VariantStruct>>(!isTextarea ? VARIANTS.slice(0,4) : VARIANTS.slice(4,))
+    const [isValidated, setIsValidated] = useState<boolean>(isTextarea && variants[0].correct == true)
+    const [questionLabel, setQuestionLabel] = useState<string>(question.label)
+    const [textareaVariant, setTextareaVariant] = useState<string>(isTextarea ? variants[0].label : "")
+    const onChange = () => {
+        if (!isTextarea) {setVariants(VARIANTS.slice(4,)); return}
+        setVariants(VARIANTS.slice(0,4))
+    }
     const onSubmit = async () => {
-        QUESTIONS.push({
+        QUESTIONS[questionIDX] = {
             id: QUESTIONS.length,
             label: questionLabel,
             isText: isTextarea
-        })
-
+        }
         router.push(`/tasks/${params.slug}/questions`)
     }
     const addVariant = () => {
@@ -55,15 +61,15 @@ export default function Page({ params }: { params: { slug: string }}) {
 
     return ( <>
         <PageHeaderEvo>
-            <HeadingTab>Добавление вопроса</HeadingTab>
+            <HeadingTab>Изменение вопроса</HeadingTab>
             <ButtonGroup>
                 {!isTextarea && <Button onClick={addVariant}>Добавить вариант</Button>}
-                <Button color="blue" onClick={onSubmit}>Создать</Button>
+                <Button color="blue" onClick={onSubmit}>Сохранить</Button>
             </ButtonGroup>
         </PageHeaderEvo>
         <div className="w-[848px] flex flex-col gap-[16px] items-end" id={formId}>
             <TextArea valueState={[questionLabel, setQuestionLabel]} placeholder="Текст вопроса" name="label" required/>
-            <LabeledCheckboxBar checked={isTextarea} onChange={() => setTextarea(!isTextarea)} label="Развернутый ответ"/>
+            <LabeledCheckboxBar checked={isTextarea} onChange={() => {setTextarea(!isTextarea); onChange()}} label="Развернутый ответ"/>
             {isTextarea ? <>
                 <LabeledCheckboxBar checked={isValidated} onChange={() => setIsValidated(!isValidated)} label="Проверяется автоматически"/>
                 {isValidated && <TextArea placeholder="Правильный ответ" valueState={[textareaVariant, setTextareaVariant]} required/>}

@@ -1,10 +1,7 @@
 "use client"
 
-import { seedTempDB } from "@/common/temp-data";
 import Button from "@/components/Button";
-import DefButton from "@/components/Button";
 import LinkButton from "@/components/Button/LinkButton";
-import StartPageSection from "@/components/Section/welcome/regular";
 import TopPageSection from "@/components/Section/welcome/top";
 
 export default function Page() {
