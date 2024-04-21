@@ -15,7 +15,7 @@ const BackgroundGridSmall: FC<BackgroundGridProps> = ({
     for (let i = 0; i < numberOfTiles; i++) {
         mappedArray[i] = Math.random() > 0.333
     }
-    const renderBlankTiles = mappedArray.map(e => <BlankTile light={light} visible={e} key={uid()}></BlankTile>)
+    const renderBlankTiles = mappedArray.map(e => <BlankTile light={light} defaultChecked={e} key={uid()}></BlankTile>)
     return (
         <div className={`mt-[-140px] flex justify-center relative z-0 overflow-hidden ${className}`}>
             <div className={`grid auto-rows-[128px] gap-[16px] grid-cols-6x128 z-10`}>
