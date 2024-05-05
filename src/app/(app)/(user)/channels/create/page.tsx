@@ -34,7 +34,7 @@ export default function Page() {
 
     return ( <>
         <PageHeaderEvo>
-            <HeadingTab>Создание канала</HeadingTab>
+            <HeadingTab>Новый канал</HeadingTab>
             <Button color="blue" type="submit" form={formId}>Создать</Button>
         </PageHeaderEvo>
         <form className="w-[848px] flex flex-col gap-[16px] items-end" id={formId} onSubmit={onSubmit}>

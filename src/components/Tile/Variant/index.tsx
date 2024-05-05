@@ -9,6 +9,7 @@ import { FC, useEffect, useState } from "react"
 interface VariantTileProps extends ListEntryTileComponentProps<VariantStruct> {
     func: [(index: number, correct: boolean, label: string) => void, (index: number) => void]
     index: number
+    data: VariantStruct
 }
 
 const VariantTIle: FC<VariantTileProps> = ({ light = false, data, index, func }) => {

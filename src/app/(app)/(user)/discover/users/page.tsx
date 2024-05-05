@@ -23,6 +23,6 @@ export default function Page() {
     
     return ( <>
         <ContentContainer searchState={[search, setSearch]} data={search ? data : []} Component={UserTile} searchableInitially={true} onClick={onClick}/>
-        {search && data.length > 0 && <Pagination page={page} lastPage={data.length < 8} onPageChange={(page) => setPage(page)}/>}
+        {search && data.length > 0 && <Pagination page={page} lastPage={Math.floor(data.length / 8)} onPageChange={(page) => setPage(page)}/>}
     </> )
 }

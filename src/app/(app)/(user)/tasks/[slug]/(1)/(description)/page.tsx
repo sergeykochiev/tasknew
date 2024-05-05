@@ -10,7 +10,7 @@ export default function Page({ params }: { params: { slug: string }}) {
     const task = TASKS.find(e => e.slug == params.slug)
     if (!task) return <NoDataPlaceholder/>
 
-    return (<>
+    return (<div className="flex justify-center relative">
         <BackgroundGridBig />
         <div className="grid w-[848px] gap-[16px] auto-rows-[128px] grid-cols-6x128">
             <Tile size="2x2" color="blue">{task.avatar}</Tile>
@@ -18,5 +18,5 @@ export default function Page({ params }: { params: { slug: string }}) {
             <Tile name="Создатель"><Link href={`/profile/${CURRENT_USER.id}`}>{CURRENT_USER.nickname}</Link></Tile>
             <Tile kind="bigtext" name="Количество вопросов">{QUESTIONS.length}</Tile>
         </div>
-    </>)
+    </div>)
 }

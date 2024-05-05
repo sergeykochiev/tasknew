@@ -1,8 +1,8 @@
 import { FC, HTMLAttributes } from "react";
 
 interface HeadingTabProps extends HTMLAttributes<HTMLElement> {
-    children: string
-    light?: boolean,
+    children: React.ReactNode
+    light?: boolean
 }
 
 const HeadingTab: FC<HeadingTabProps> = ({ children, light = false, className, ...props }) => {

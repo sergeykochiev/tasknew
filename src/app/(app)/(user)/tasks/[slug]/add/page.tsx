@@ -55,7 +55,9 @@ export default function Page({ params }: { params: { slug: string }}) {
 
     return ( <>
         <PageHeaderEvo>
-            <HeadingTab>Добавление вопроса</HeadingTab>
+            <ButtonGroup>
+                <HeadingTab>Новый вопрос</HeadingTab>
+            </ButtonGroup>
             <ButtonGroup>
                 {!isTextarea && <Button onClick={addVariant}>Добавить вариант</Button>}
                 <Button color="blue" onClick={onSubmit}>Создать</Button>

@@ -26,19 +26,19 @@ export default function Template({
 
     return (
         <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
-            <PageHeaderEvo>
+            <PageHeaderEvo heading={task.title}>
                 <ButtonGroup>
-                    <LinkHeadingTab href={`/tasks/${params.slug}`} name={id}>{"Описание " + `"${task.title}"`}</LinkHeadingTab>
+                    <LinkHeadingTab href={`/tasks/${params.slug}`} name={id}>Описание</LinkHeadingTab>
                     <LinkHeadingTab href={`/tasks/${params.slug}/questions`} name={id}>Вопросы</LinkHeadingTab>
                 </ButtonGroup>
                 <ButtonGroup>
                     {!isMine ? <>
                         <Button onClick={() => setFav(!isFav)}>{isFav ? "**" : "*"}</Button>
-                        <Button color="blue">Решить</Button>              
+                        <LinkButton href={`/solve/${params.slug}`} color="blue">Решить</LinkButton>              
                     </> : <>
                         <Button>Статистика</Button>
-                        <LinkButton href={`/tasks/${params.slug}/add`}>Добавить вопрос</LinkButton>
-                        <LinkButton href={`/tasks/${params.slug}/edit`} color="blue"><img src="/ic_round-edit.svg"/></LinkButton>
+                        <LinkButton href={`${params.slug}/add`}>Добавить вопрос</LinkButton>
+                        <LinkButton href={`${params.slug}/edit`} color="blue"><img src="/ic_round-edit.svg"/></LinkButton>
                     </>}
                 </ButtonGroup>
             </PageHeaderEvo>

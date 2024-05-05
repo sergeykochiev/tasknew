@@ -11,7 +11,7 @@ export default function Layout({
   }>) {
     const id = useId()
     return ( <>
-      <PageHeaderEvo>
+      <PageHeaderEvo heading="Задания">
         <ButtonGroup>
           <LinkHeadingTab href="/tasks/created" name={id}>Созданные</LinkHeadingTab>
           <LinkHeadingTab href="/tasks/solved" name={id}>Решенные</LinkHeadingTab>

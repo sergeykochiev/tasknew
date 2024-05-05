@@ -11,12 +11,14 @@ export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
 const TextArea: FC<TextAreaProps> = ({
     small = false,
     valueState = [undefined, undefined],
-    light = false,
+    required,
+    placeholder,
+    light,
     ...props
 }) => {
     const [value, setValue] = valueState
     return (
-        <textarea {...props} className={
+        <textarea {...props} required={required} placeholder={!required ? placeholder : placeholder + " *"} className={
             `resize-none
             outline-offset-[-2px]
             search-field
@@ -27,14 +29,12 @@ const TextArea: FC<TextAreaProps> = ({
             w-full
             grid
             place-items-center
-            bg-transparent
             outline
-            hover:bg-main-dark
             transition-all
             ${light ?
-                "outline-tile-gray focus:outline-main-dark text-main-dark"
+                "outline-tile-gray focus:outline-main-blue focus:bg-main-blue text-bg-dark bg-tile-gray placeholder:text-main-dark"
             :
-                "outline-main-dark focus:outline-tile-gray focus:bg-main-dark text-tile-gray"
+                "outline-main-dark focus:outline-tile-gray focus:bg-main-dark text-tile-gray hover:bg-main-dark bg-bg-dark"
             }
             outline-[2px]`
         } value={value!} onChange={e => setValue && setValue(e.target.value)}></textarea>

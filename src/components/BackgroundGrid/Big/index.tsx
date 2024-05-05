@@ -17,7 +17,7 @@ const BackgroundGridBig: FC<BackgroundGridProps> = ({
     }
     const renderBlankTiles = mappedArray.map(e => <BlankTile light={light} defaultChecked={e} key={uid()}></BlankTile>)
     return (
-        <div className={`mt-[140px] flex justify-center absolute z-0 overflow-hidden ${className}`}>
+        <div className={`flex justify-center absolute z-0 overflow-hidden ${className}`}>
             <div className={`grid auto-rows-[128px] gap-[16px] grid-cols-12x128 z-10`}>
                 {renderBlankTiles}
             </div>

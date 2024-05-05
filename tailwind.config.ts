@@ -48,7 +48,8 @@ const config: Config = {
         "main-gray": "#D9D9D9",
         "tile-red": "#F34D4D",
         "blanktile": "#353535",
-        "tile-dark-gray": "363636"
+        "tile-dark-gray": "363636",
+        "phblank": "#686868"
       },
     },
   },

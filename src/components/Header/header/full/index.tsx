@@ -4,10 +4,9 @@ import { FC } from "react"
 import { useRouter } from "next/navigation"
 import HeaderTab from "../../bones/Tab"
 import { sourceCodePro } from "@/common/fonts"
+import Link from "next/link"
 
 const Header: FC = () => {
-    const router = useRouter()
-
     // const light = PATH_WITH_DARK_THEME.includes(usePathname())
     const light = false
 
@@ -17,10 +16,10 @@ const Header: FC = () => {
                 <HeaderTab light={light} href="/tasks/solved" representedPaths={["/tasks/solved", "/tasks/created", "/tasks/favorites"]}>Задания</HeaderTab>
                 <HeaderTab light={light} href="/channels/subscribed" representedPaths={["/channels/subscribed", "/channels/created"]}>Каналы</HeaderTab>
             </div>
-            <span className="font-bold text-[24px] tracking-[0.25em] cursor-pointer select-none" onClick={() => router.push('/home')}>TASK</span>
+            <Link className="font-bold text-[24px] tracking-[0.25em] cursor-pointer select-none" href="/home">TASK</Link>
             <div className="flex gap-0 h-full">
-                <HeaderTab light={light} href="/subscribtions">Подписки</HeaderTab>
-                <HeaderTab light={light} href="/profile">Профиль</HeaderTab>
+                <HeaderTab light={light} href="/discover/tasks" representedPaths={["/discover/tasks", "/discover/channels", "/discover/users"]}>Найти</HeaderTab>
+                <HeaderTab light={light} href="/profile" representedPaths={["/profile", "/profile/subscribtions"]}>Профиль</HeaderTab>
             </div>
         </div>
     </div>

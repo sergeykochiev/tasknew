@@ -11,7 +11,7 @@ export default function Page({ params }: { params: { userId: string }}) {
     const profile = PROFILES.find(e => e.userId == user.id)
     if (!profile) return <NoDataPlaceholder/>
     
-    return <>
+    return <div className="flex justify-center relative">
         <BackgroundGridBig />
         <div className="grid w-[848px] gap-[16px] auto-rows-[128px] grid-cols-6x128">
             <Tile size="2x2" color="blue">{profile.avatar}</Tile>
@@ -26,5 +26,5 @@ export default function Page({ params }: { params: { userId: string }}) {
                 </Tile>
             </> : <Tile size="4x2" align="center" color="mid-gray" className="outline outline-[2px] outline-tile-gray">Данные скрыты</Tile>}
         </div>
-    </>
+    </div>
 }

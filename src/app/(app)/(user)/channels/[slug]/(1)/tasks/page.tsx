@@ -22,10 +22,11 @@ export default function Page({ params }: { params: { slug: string }}) {
     const channel = CHANNELS.find(e => e.slug == params.slug)
     if (!channel) return <NoDataPlaceholder/>
     const tasks = TASKS.filter(e => e.channelId == channel.id).slice((page - 1) * 8, (page - 1) * 8 + 8)
+    const lastPage = TASKS.length / 8
 
     return ( <>
         <ContentContainer searchable={false} data={tasks} Component={TaskTile} onClick={onClick}/>
-        {tasks.length > 0 && <Pagination page={page} lastPage={tasks.length < 8} onPageChange={(page) => setPage(page)}/>}
+        {tasks.length > 0 && <Pagination page={page} lastPage={lastPage} onPageChange={(page) => setPage(page)}/>}
     </>
     )
 }

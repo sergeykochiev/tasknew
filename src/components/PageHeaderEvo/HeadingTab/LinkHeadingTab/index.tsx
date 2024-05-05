@@ -9,15 +9,16 @@ interface LinkHeadingTabProps extends LinkProps {
     redirectTo?: string,
     light?: boolean,
     name: string,
-    className?: string
+    representedPaths?: string[]
+    stretch?: boolean
 }
 
-const LinkHeadingTab: FC<LinkHeadingTabProps> = ({ children, href, light = false, className, name, ...props }) => {
+const LinkHeadingTab: FC<LinkHeadingTabProps> = ({ children, href, light = false, name, representedPaths, stretch, ...props }) => {
     const currentPath = usePathname()
-    const isCurrent = currentPath == href
+    const isCurrent = representedPaths ? representedPaths.includes(currentPath) : currentPath == href
 
     return (
-        <Link href={href} className={`whitespace-nowrap heading-tab [&:not(:has(input:checked))]:hover:outline-tile-gray [&:not(:has(input:checked))]:hover:outline-offset-0 [&:not(:has(input:checked))]:cursor-pointer transition-all outline-transparent outline outline-[2px] outline-offset-[-2px] grid place-items-center px-[32px] h-[41px] text-[16px] rounded-[16px] text-tile-gray bg-transparent has-[input:checked]:bg-tile-gray has-[input:checked]:text-bg-dark font-bold ${className}`} {...props}>
+        <Link href={href} className={`whitespace-nowrap heading-tab [&:not(:has(input:checked))]:hover:outline-tile-gray [&:not(:has(input:checked))]:hover:outline-offset-0 [&:not(:has(input:checked))]:cursor-pointer transition-all outline-transparent outline outline-[2px] outline-offset-[-2px] grid place-items-center px-[32px] h-[41px] text-[16px] rounded-[16px] text-tile-gray bg-transparent has-[input:checked]:bg-tile-gray has-[input:checked]:text-bg-dark font-bold ${stretch ? "w-full" : ""}`} {...props}>
             {children}
             <input type="radio" name={name && name} checked={isCurrent} readOnly className="hidden absolute"/>
         </Link>

@@ -26,11 +26,11 @@ export default function Template({
     const isMine = CURRENT_USER.id == channel.creatorId
 
     return (
-        <main className="flex flex-col items-center bg-bg-dark min-h-smscreen">
-            <PageHeaderEvo>
+        <>
+            <PageHeaderEvo heading={channel!.label}>
                 <ButtonGroup>
-                    <LinkHeadingTab name={id} href={`/channels/${params.slug}`}>{`Описание канала "${channel!.label}"`}</LinkHeadingTab>
-                    <LinkHeadingTab name={id} href={`/channels/${params.slug}/tasks`}>{`Задания канала`}</LinkHeadingTab>
+                    <LinkHeadingTab name={id} href={`/channels/${params.slug}`}>Описание</LinkHeadingTab>
+                    <LinkHeadingTab name={id} href={`/channels/${params.slug}/tasks`}>Задания</LinkHeadingTab>
                 </ButtonGroup>
                 <ButtonGroup>
                     {!isMine ? <DefButton color="blue" onClick={() => setSubbed(!subbed)}>{subbed ? "Выйти из канала" : "Войти в канал"}</DefButton> :
@@ -42,6 +42,6 @@ export default function Template({
                 </ButtonGroup>
             </PageHeaderEvo>
             {children}
-        </main>
+        </>
     );
   }

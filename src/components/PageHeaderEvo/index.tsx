@@ -1,20 +1,25 @@
+import { sourceCodePro } from "@/common/fonts"
 import { FC, HTMLAttributes } from "react"
+import Bar from "../Bar"
+import PageHeading from "../PageHeading"
 
 interface PageHeaderEvoProps extends HTMLAttributes<HTMLElement> {
-    children: Array<React.ReactElement> | React.ReactElement
+    children?: Array<React.ReactElement> | React.ReactElement
     light?: boolean
+    heading?: string
+    centered?: boolean
 }
 
 const PageHeaderEvo: FC<PageHeaderEvoProps> = ({
     children,
-    className,
-    light = false
+    centered = false,
+    light = false,
+    heading
 }) => {
     return (
-        <div className={`flex pt-[64px] pb-[32px] ${className} z-10`}>
-            <div className={`${light ? "bg-tile-gray" : "bg-main-dark"} w-[848px] flex justify-between gap-[8px] rounded-[18px] p-[2px]`}>
-                {children}
-            </div>
+        <div className="flex pt-[64px] pb-[32px] z-10 flex-col gap-[16px]">
+            {heading && <PageHeading centered={centered}>{heading}</PageHeading>}
+            {children && <Bar light={light} evenly={centered}>{children}</Bar>}
         </div>
     )
 }

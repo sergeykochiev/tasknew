@@ -6,11 +6,11 @@ import TopPageSection from "@/components/Section/welcome/top";
 
 export default function Page() {
     return (
-        <main className="flex flex-col">
+        <div className="flex flex-col">
             <TopPageSection heading="Tycoon Task">
                 Описание
                 <Button className="w-[128px]" color="blue">Подробнее</Button>
-                <LinkButton className="w-[128px]" color="dark-gray" href="/home">Войти</LinkButton>
+                <LinkButton className="w-[128px]" color="dark-gray" href="/login">Войти</LinkButton>
             </TopPageSection>
             {/* <StartPageSection color="dark-gray" heading="Красота в простоте" align="left">
                 Вы создаете задания, которые можно группировать по каналам. Или вы их решаете.
@@ -28,6 +28,6 @@ export default function Page() {
                 Предлагаем вам присоединиться и попробовать. Это бесплатно!
                 <DefButton color="blue">Вперед</DefButton>
             </StartPageSection> */}
-        </main>
+        </div>
     )
 }

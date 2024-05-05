@@ -9,10 +9,10 @@ export default function Layout({
   }>) {
     const id = useId()
     return (<>
-      <PageHeaderEvo>
-        <LinkHeadingTab href="/discover/tasks" className="w-full" name={id}>Найти задания</LinkHeadingTab>
-        <LinkHeadingTab href="/discover/channels" className="w-full" name={id}>Найти каналы</LinkHeadingTab>
-        <LinkHeadingTab href="/discover/users" className="w-full" name={id}>Найти пользователей</LinkHeadingTab>
+      <PageHeaderEvo heading="Найти" centered>
+        <LinkHeadingTab href="/discover/tasks" name={id} stretch>Задания</LinkHeadingTab>
+        <LinkHeadingTab href="/discover/channels" name={id} stretch>Каналы</LinkHeadingTab>
+        <LinkHeadingTab href="/discover/users" name={id} stretch>Пользователи</LinkHeadingTab>
       </PageHeaderEvo>
       {children}
     </> 

@@ -3,6 +3,7 @@ import { FC } from "react"
 
 interface QuestionTileProps extends ListEntryTileComponentProps<QuestionStruct> {
     index: number
+    data: QuestionStruct
 }
 
 const QuestionTIle: FC<QuestionTileProps> = ({ light = false, data, onClick, index }) => {

@@ -3,7 +3,6 @@
 import React, { FC } from "react";
 import ChannelScruct from "@/common/types/data-sctructures/channel";
 import { ListEntryTileComponentProps } from "@/common/types/components/tile-list-entry";
-import { useRouter } from "next/navigation";
 
 interface ChannelTileProps extends ListEntryTileComponentProps<ChannelScruct> {
 }
@@ -13,6 +12,33 @@ const ChannelTile: FC<ChannelTileProps> = ({
     light = false,
     onClick
 }) => {
+    if (!data) return (
+        <div className={`z-20 col-span-3 row-span-1 outline outline-[9px] ${light ? "bg-white outline-white" : "bg-bg-dark outline-bg-dark"}`}>
+            <div className={`p-[16px] flex flex-col justify-between gap-[8px] h-full ${!light ? "bg-blanktile text-phblank  " : "bg-tile-gray text-white"} rounded-[16px]`}>
+                <div className="flex flex-col gap-[8px]">
+                    <div className="text-[20px]">
+                        Пустой канал
+                    </div>
+                    <div className="text-[16px]">
+                        Пустое описание
+                    </div>
+                </div>
+                <div className="flex text-[12px] gap-[4px] items-center">
+                    <div>
+                        Никакой/Никакой
+                    </div>
+                    -
+                    <div>
+                        Нет заданий
+                    </div>
+                    -
+                    <div>
+                        Нет подписчиков
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
     return (
         <div className={`z-20 col-span-3 row-span-1 outline outline-[9px] ${light ? "bg-white outline-white" : "bg-bg-dark outline-bg-dark"}`}>
             <div onClick={() => onClick && onClick(data)} className={`tile-content p-[16px] flex flex-col justify-between gap-[8px] h-full ${light ? "bg-main-dark text-tile-gray" : "bg-tile-gray text-bg-dark"} rounded-[16px]`}>

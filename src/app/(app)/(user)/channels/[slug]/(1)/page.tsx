@@ -2,7 +2,6 @@
 
 import { CHANNELS, TASKS, USERS } from "@/common/temp-data"
 import BackgroundGridBig from "@/components/BackgroundGrid/Big"
-import NoDataPlaceholder from "@/components/NoDataPlaceholder"
 import Tile from "@/components/Tile/Regular"
 import Link from "next/link"
 
@@ -11,8 +10,7 @@ export default function Page({ params }: { params: { slug: string }}) {
     if (!channel) return
     const creator = USERS.find(e => e.id == channel.creatorId)
 
-    return (<>
-        <BackgroundGridBig />
+    return (<div className="relative flex justify-center">
         <div className="grid w-[848px] gap-[16px] auto-rows-[128px] grid-cols-6x128">
             <Tile size="3x2" name="Описание">{channel.description}</Tile>
             <Tile kind="bigtext" name="Публичный">{channel.is_public ? "ДА" : "НЕТ"}</Tile>
@@ -23,5 +21,6 @@ export default function Page({ params }: { params: { slug: string }}) {
             </Tile>
             <Tile kind="bigtext" align="bottom-reversed" name="Цена">{channel.price ? channel.price : 0}р</Tile>
         </div>
-    </>)
+        <BackgroundGridBig />
+    </div>)
 }

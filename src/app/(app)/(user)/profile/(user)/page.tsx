@@ -9,7 +9,7 @@ export default function Page() {
     const profile = PROFILES.find(e => e.userId == CURRENT_USER.id)
     if (!profile) return <NoDataPlaceholder/>
     
-    return <>
+    return <div className="flex justify-center relative">
         <BackgroundGridBig />
         <div className="grid w-[848px] gap-[16px] auto-rows-[128px] grid-cols-6x128">
             <Tile size="2x2" color="blue">{profile.avatar}</Tile>
@@ -22,5 +22,5 @@ export default function Page() {
                 <Tile kind="bigtext" name="Заданий создано">1</Tile>
             </Tile>
         </div>
-    </>
+    </div>
 }

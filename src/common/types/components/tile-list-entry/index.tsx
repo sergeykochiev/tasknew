@@ -1,5 +1,5 @@
 export interface ListEntryTileComponentProps<T> {
     light?: boolean
-    data: T
+    data?: T
     onClick?: (data: T) => void
 }

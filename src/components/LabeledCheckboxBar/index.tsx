@@ -1,6 +1,7 @@
 "use client"
 
 import { FC, InputHTMLAttributes } from "react";
+import Bar from "../Bar";
 
 interface LabeledCheckboxBarProps extends InputHTMLAttributes<HTMLInputElement> {
     checkboxLabels?: [string, string]
@@ -13,7 +14,7 @@ const LabeledCheckboxBar: FC<LabeledCheckboxBarProps> = ({
     ...props
 }) => {
     return (
-        <div className="w-full flex items-center justify-between p-[2px] bg-main-dark rounded-[14px]">
+        <Bar>
             <div className="px-[16px] text-tile-gray">
                 {label}
             </div>
@@ -22,7 +23,7 @@ const LabeledCheckboxBar: FC<LabeledCheckboxBarProps> = ({
                 <div className="block group-has-[input:checked]:hidden">{checkboxLabels[1]}</div>
                 <input className="hidden absolute" type="checkbox" {...props}></input>
             </label>
-        </div>
+        </Bar>
     )
 }
 

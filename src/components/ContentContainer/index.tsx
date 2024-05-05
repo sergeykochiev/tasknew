@@ -17,10 +17,6 @@ interface ContentContainerProps<T> {
 }
 
 export default function ContentContainer<T extends { id: number }>({ data, Component, searchState, searchable = true, searchableInitially = false, onClick }: ContentContainerProps<T>) {
-    const dupa = Array(8 - data.length).fill(1)
-    const dupa1 = createContainerBlankMap((8 - data.length) * 3, 3)
-    console.log(dupa)
-    
     return (
         <div className="flex flex-col gap-[16px] items-center">
             <div className="w-[848px]">{searchable && (searchableInitially || data) && <InputField value={searchState![0]} onChange={e => searchState![1](e.target.value)} placeholder="Поиск"></InputField>}</div>
@@ -28,7 +24,7 @@ export default function ContentContainer<T extends { id: number }>({ data, Compo
                 <BackgroundGridSide chance={data ? (data.length / 8) : 0} toRight={false}/>
                 <div className="grid gap-[16px] grid-rows-4x128 grid-cols-6x128">
                     {data.map(e => <Component data={e} key={e.id} onClick={onClick}/>)}
-                    {dupa.map((e, i) => <div key={i} className="bg-blanktile col-span-3 row-span-1 rounded-[16px]"></div>)}
+                    {Array(8 - data.length).fill(<Component/>)}
                 </div>
                 <BackgroundGridSide chance={data ? data.length / 8 : 0}/>
             </div> : <NoDataPlaceholder />}

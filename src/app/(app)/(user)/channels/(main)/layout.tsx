@@ -11,7 +11,7 @@ export default function Layout({
   }>) {
     const id = useId()
     return (<>
-      <PageHeaderEvo>
+      <PageHeaderEvo heading="Каналы">
         <ButtonGroup>
           <LinkHeadingTab href="/channels/created" name={id}>Созданные</LinkHeadingTab>
           <LinkHeadingTab href="/channels/subscribed" name={id}>Подписки</LinkHeadingTab>
