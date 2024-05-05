@@ -11,7 +11,7 @@ interface LinkPageHeadingProps extends LinkProps {
 
 const LinkPageHeading: FC<LinkPageHeadingProps> = ({ children, stretch = false, name, determineIfActive, ...props }) => {
     return (
-        <Link {...props} className={`${sourceCodePro.className} transition-all text-[48px] [&:not(:has(input:checked))]:hover:text-main-dark text-blanktile font-bold has-[input:checked]:text-tile-gray ${stretch && "w-full"}`}>
+        <Link {...props} className={`${sourceCodePro.className} transition-all text-[48px] [&:not(:has(input:checked))]:hover:underline text-main-dark font-bold has-[input:checked]:text-tile-gray ${stretch && "w-full"}`}>
             {children}
             <input type="radio" name={name} checked={determineIfActive()} readOnly className="hidden absolute"/>
         </Link>
