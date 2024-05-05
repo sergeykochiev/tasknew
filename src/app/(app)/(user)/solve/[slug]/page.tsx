@@ -1,6 +1,7 @@
 "use client"
 
 import { QUESTIONS, TASKS, VARIANTS } from "@/common/temp-data"
+import AlertPopup from "@/components/AlertPopup"
 import Button from "@/components/Button"
 import LinkButton from "@/components/Button/LinkButton"
 import ButtonGroup from "@/components/ButtonGroup"
@@ -15,6 +16,7 @@ import { useId, useState } from "react"
 export default function Page({ params }: { params: { slug: string }}) {
     const task = TASKS.find(e => e.slug == params.slug)
     if (!task) return
+    const [alert, setAlert] = useState<boolean>(false)
     const query = useSearchParams()
     const [questionId, setQuestionId] = useState<number>(query.get("question") ? Number(query.get("question")) : 1)
     const formId = useId()
@@ -25,8 +27,7 @@ export default function Page({ params }: { params: { slug: string }}) {
                 <HeadingTab>{`Вопрос ` + `${questionId}`}</HeadingTab>
               </ButtonGroup>
               <ButtonGroup>
-                  <LinkButton color="blue" href="/tasks/created">Сохранить</LinkButton>
-                  <Button type="submit" form={formId}>Отправить</Button>
+              {questionId == QUESTIONS.length ? <Button color="blue" onClick={() => setAlert(true)}>Отправить</Button> : <Button color="blue" onClick={() => setQuestionId(questionId + 1)}>Сохранить</Button>}
               </ButtonGroup>
         </PageHeaderEvo>
         <div className="flex flex-col w-[848px] gap-[16px]">
@@ -36,5 +37,6 @@ export default function Page({ params }: { params: { slug: string }}) {
             </form>}
         </div>
         <Pagination queryParam="question" lastPage={QUESTIONS.length - 1} page={questionId} onPageChange={e => setQuestionId(e)}></Pagination>
+        {alert && <AlertPopup closeAlert={() => setAlert(false)} label="Вы действительно хотите отправить решение?" actionName="Отправить" action={`/tasks/${params.slug}`}/>}
     </>
 }
