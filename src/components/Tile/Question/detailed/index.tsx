@@ -7,6 +7,7 @@ interface DetailedQuestionTileProps extends ListEntryTileComponentProps<Question
     deleteFunction: () => void
     variants: Array<VariantStruct>
     index: number
+    data: QuestionStruct
 }
 
 const DetailedQuestionTIle: FC<DetailedQuestionTileProps> = ({ light = false, data, index, deleteFunction, variants }) => {
