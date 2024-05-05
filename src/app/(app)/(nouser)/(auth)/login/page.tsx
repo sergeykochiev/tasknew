@@ -9,7 +9,7 @@ export default function Page() {
     const router = useRouter()
     const onSubmit = async (e: FormEvent) => {
         e.preventDefault()
-        router.push("/home")
+        router.push("/home/recent/tasks")
     }
     return <form className="flex flex-col gap-[16px] w-[848px]" onSubmit={onSubmit}>
         <InputField type="email" placeholder="E-mail" required/>
