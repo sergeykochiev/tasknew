@@ -17,7 +17,7 @@ const PageHeaderEvo: FC<PageHeaderEvoProps> = ({
     heading
 }) => {
     return (
-        <div className="flex pt-[64px] pb-[32px] z-10 flex-col gap-[16px]">
+        <div className="flex pt-[64px] mt-[44px] pb-[32px] z-10 flex-col gap-[16px]">
             {heading && <PageHeading centered={centered}>{heading}</PageHeading>}
             {children && <Bar light={light} evenly={centered}>{children}</Bar>}
         </div>

@@ -8,7 +8,7 @@ interface PageHeadingProps {
 
 const PageHeading: FC<PageHeadingProps> = ({ children, centered = false }) => {
     return (
-        <div className={`${sourceCodePro.className} text-[48px] font-bold text-tile-gray ${centered ? "text-center" : "text-left"}`}>{children}</div>
+        <div className={`${sourceCodePro.className} w-full text-[48px] font-bold text-tile-gray ${centered ? "text-center" : "text-left"}`}>{children}</div>
     )
 }
 
