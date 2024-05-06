@@ -1,6 +1,6 @@
 "use client"
 
-import { CURRENT_USER, PROFILES, USERS } from "@/common/temp-data";
+import { CURRENT_USER, PROFILES } from "@/common/temp-data";
 import BackgroundGridBig from "@/components/BackgroundGrid/Big"
 import NoDataPlaceholder from "@/components/NoDataPlaceholder"
 import Tile from "@/components/Tile/Regular"
@@ -18,8 +18,8 @@ export default function Page() {
             <Tile name="Фамилия">{profile.last_name}</Tile>
             <Tile size="2x1" name="Статус">{CURRENT_USER.status}</Tile>
             <Tile size="2x1">
-                <Tile kind="bigtext" name="Заданий пройдено">1</Tile>
-                <Tile kind="bigtext" name="Заданий создано">1</Tile>
+                <Tile big name="Заданий пройдено">1</Tile>
+                <Tile big name="Заданий создано">1</Tile>
             </Tile>
         </div>
     </div>

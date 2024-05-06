@@ -11,17 +11,4 @@ class ChannelStruct {
     ) {}
 }
 
-// interface ChannelStruct {
-//     id: number,
-//     creatorId: number,
-//     brief_description: string,
-//     description: string,
-//     label: string,
-//     price: number | null,
-//     is_public: boolean,
-//     tasksCount: number,
-//     subsCount: number,
-//     slug: string
-// }
-
 export default ChannelStruct

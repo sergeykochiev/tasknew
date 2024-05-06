@@ -21,8 +21,8 @@ export default function Page({ params }: { params: { userId: string }}) {
                 <Tile name="Фамилия">{profile.last_name}</Tile>
                 <Tile size="2x1" name="Статус">{user.status}</Tile>
                 <Tile size="2x1">
-                    <Tile kind="bigtext" name="Заданий пройдено">1</Tile>
-                    <Tile kind="bigtext" name="Заданий создано">1</Tile>
+                    <Tile big name="Заданий пройдено">1</Tile>
+                    <Tile big name="Заданий создано">1</Tile>
                 </Tile>
             </> : <Tile size="4x2" align="center" color="mid-gray" className="outline outline-[2px] outline-tile-gray">Данные скрыты</Tile>}
         </div>

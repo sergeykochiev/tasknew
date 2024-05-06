@@ -1,16 +1,14 @@
 "use client"
 
-import React, { useState, FC, InputHTMLAttributes, useId, useEffect } from "react";
+import React, { useState, FC, InputHTMLAttributes, useId } from "react";
 
 interface BlankTileProps extends InputHTMLAttributes<HTMLInputElement> {
     span?: "1x1" | "2x2" | "3x1" | "2x1",
-    light?: boolean
     defaultChecked?: boolean
 } 
 
 const BlankTile: FC<BlankTileProps> = ({
     span = "1x1",
-    light = false,
     defaultChecked = true
 }) => {
     const [checked, setChecked] = useState<boolean>(defaultChecked)

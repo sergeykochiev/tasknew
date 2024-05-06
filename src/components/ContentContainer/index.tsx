@@ -5,7 +5,6 @@ import { Dispatch, FC, SetStateAction } from "react"
 import InputField from "../InputField"
 import { ListEntryTileComponentProps } from "@/common/types/components/tile-list-entry"
 import BackgroundGridSide from "../BackgroundGrid/side"
-import { createContainerBlankMap } from "@/common/helpers"
 
 interface ContentContainerProps<T> {
     data: Array<T>
@@ -18,7 +17,7 @@ interface ContentContainerProps<T> {
 
 export default function ContentContainer<T extends { id: number }>({ data, Component, searchState, searchable = true, searchableInitially = false, onClick }: ContentContainerProps<T>) {
     return (
-        <div className="flex flex-col gap-[16px] items-center">
+        <div className={`flex flex-col ${searchable && "gap-[16px]"} items-center`}>
             <div className="w-[848px]">{searchable && (searchableInitially || data) && <InputField value={searchState![0]} onChange={e => searchState![1](e.target.value)} placeholder="Поиск"></InputField>}</div>
             {data && data.length > 0 ? <div className="flex gap-[16px]">
                 <BackgroundGridSide chance={data ? (data.length / 8) : 0} toRight={false}/>

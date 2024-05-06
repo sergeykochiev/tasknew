@@ -1,7 +1,6 @@
 "use client"
 
 import { CURRENT_USER, QUESTIONS, TASKS, VARIANTS } from "@/common/temp-data";
-import VariantStruct from "@/common/types/data-sctructures/variant";
 import NoDataPlaceholder from "@/components/NoDataPlaceholder";
 import QuestionTIle from "@/components/Tile/Question"
 import DetailedQuestionTIle from "@/components/Tile/Question/detailed";

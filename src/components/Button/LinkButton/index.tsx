@@ -23,11 +23,8 @@ const LinkButton: FC<LinkButtonProps> = ({
     useEffect(() => {
         apply2pxHover(id)
     }, [])
-    // return (
-    //     <Link {...props} id={id} className={`whitespace-nowrap group relative overflow-hidden m-0 transition-all button text-[14px] h-[41px] px-[24px] flex items-center justify-center rounded-[16px] ${color} text-bg-dark z-10 ${className!}`}>{children}</Link>
-    // )
     return (
-        <Link {...props} id={id} className={`whitespace-nowrap overflow-hidden m-0 transition-all text-[14px] h-[41px] ${square ? "aspect-square" : "px-[24px] w-[128px]"} flex items-center justify-center rounded-[16px] ${color} z-10`}>{children}</Link>
+        <Link {...props} id={id} className={`whitespace-nowrap overflow-hidden m-0 transition-all text-[14px] ${stretched && "w-full"} h-[41px] ${square ? "aspect-square" : "px-[24px]"} flex items-center justify-center rounded-[16px] ${color} z-10`}>{children}</Link>
     )
 }
 

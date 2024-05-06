@@ -1,5 +1,6 @@
-import PageHeaderEvo from "@/components/PageHeaderEvo";
-import LinkHeadingTab from "@/components/PageHeaderEvo/HeadingTab/LinkHeadingTab";
+import PageHeader from "@/components/PageHeader";
+import LinkHeadingTab from "@/components/PageHeader/HeadingTab/LinkHeadingTab";
+import PageHeading from "@/components/PageHeading";
 import { useId } from "react";
 
 export default function Layout({
@@ -9,10 +10,12 @@ export default function Layout({
   }>) {
     const id = useId()
     return (<div className="flex flex-col items-center bg-bg-dark min-h-smscreen">
-      <PageHeaderEvo className="justify-around items-center" heading="Аутентификация" centered>
-        <LinkHeadingTab href="/login" name={id} stretch>Войти</LinkHeadingTab>
-        <LinkHeadingTab href="/signup" name={id} stretch>Зарегистрироваться</LinkHeadingTab>
-      </PageHeaderEvo>
+      <PageHeader className="justify-around items-center"headings={[
+        <PageHeading>Аутентификация</PageHeading>
+      ]} tabs={[
+        <LinkHeadingTab stretch href="/login" name={id}>Войти</LinkHeadingTab>,
+        <LinkHeadingTab stretch href="/signup" name={id}>Зарегистрироваться</LinkHeadingTab>
+      ]}/>
       {children}
     </div>   
     )

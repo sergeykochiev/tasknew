@@ -1,6 +1,5 @@
 import "../globals.css";
 import Footer from "@/components/Footer";
-import Link from "next/link";
 
 export default function RootLayout({
   children,

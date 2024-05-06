@@ -1,7 +1,7 @@
 import LinkButton from "@/components/Button/LinkButton";
-import ButtonGroup from "@/components/ButtonGroup";
-import PageHeaderEvo from "@/components/PageHeaderEvo";
-import LinkHeadingTab from "@/components/PageHeaderEvo/HeadingTab/LinkHeadingTab";
+import PageHeader from "@/components/PageHeader";
+import LinkHeadingTab from "@/components/PageHeader/HeadingTab/LinkHeadingTab";
+import PageHeading from "@/components/PageHeading";
 import { useId } from "react";
 
 export default function Layout({
@@ -10,19 +10,14 @@ export default function Layout({
     children: React.ReactNode;
   }>) {
     const id = useId()
-    return (<>
-      <PageHeaderEvo heading="Каналы">
-        <ButtonGroup>
-          <LinkHeadingTab href="/channels/created" name={id}>Созданные</LinkHeadingTab>
-          <LinkHeadingTab href="/channels/subscribed" name={id}>Подписки</LinkHeadingTab>
-        </ButtonGroup>
-        <ButtonGroup>
-          <LinkButton href="/discover/channels">Найти еще</LinkButton>
+    return (<div className="flex flex-col gap-[32px] w-[848px]">
+      <PageHeader headings={[<PageHeading>Каналы</PageHeading>]} tabs={[<LinkHeadingTab href="/channels/created" name={id}>Созданные</LinkHeadingTab>,
+          <LinkHeadingTab href="/channels/subscribed" name={id}>Подписки</LinkHeadingTab>]} buttons={[
+          <LinkButton href="/discover/channels">Найти еще</LinkButton>,
           <LinkButton href="/channels/create">Создать</LinkButton>
-        </ButtonGroup>
-      </PageHeaderEvo>
+          ]}/>
       {children}
-    </>
+    </div>
 
     );
   }

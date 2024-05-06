@@ -1,8 +1,6 @@
 "use client"
 
 import { sourceCodePro } from "@/common/fonts";
-import BackgroundGridBig from "@/components/BackgroundGrid/Big";
-import Button from "@/components/Button";
 import LinkButton from "@/components/Button/LinkButton";
 import BlankTile from "@/components/Tile/Blank";
 

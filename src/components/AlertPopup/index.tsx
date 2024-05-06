@@ -12,7 +12,7 @@ interface AlertPopupProps {
 
 const AlertPopup: FC<AlertPopupProps> = (props) => {
     return (
-        <div className="grid place-items-center fixed z-50 w-screen h-screen">
+        <div className="grid place-items-center fixed z-50 w-screen h-screen left-0 top-0">
             <div className="bg-black opacity-50 w-full h-full absolute" onClick={props.closeAlert}/>
             <div className="flex flex-col gap-[16px] p-[16px] text-[16px] rounded-[16px] bg-main-dark text-tile-gray fixed z-50 opacity-100">
                 {props.label}

@@ -1,13 +1,11 @@
 "use client"
 
 import { FC } from "react"
-import { useRouter } from "next/navigation"
 import HeaderTab from "../../bones/Tab"
 import { sourceCodePro } from "@/common/fonts"
 import Link from "next/link"
 
 const Header: FC = () => {
-    // const light = PATH_WITH_DARK_THEME.includes(usePathname())
     const light = false
 
     return <div className={`${sourceCodePro.className} h-[44px] w-full absolute bg-main-blue text-main-dark flex justify-center`}>
@@ -19,7 +17,7 @@ const Header: FC = () => {
             <Link className="font-bold text-[24px] tracking-[0.25em] cursor-pointer select-none" href="/home/recent/tasks">TASK</Link>
             <div className="flex gap-0 h-full">
                 <HeaderTab light={light} href="/discover/tasks" representedPaths={["/discover/tasks", "/discover/channels", "/discover/users"]}>Найти</HeaderTab>
-                <HeaderTab light={light} href="/profile" representedPaths={["/profile", "/profile/subscribtions"]}>Профиль</HeaderTab>
+                <HeaderTab light={light} href="/profile" representedPaths={["/profile", "/profile/subscribtions", "profile/edit", "profile/edit/password"]}>Профиль</HeaderTab>
             </div>
         </div>
     </div>

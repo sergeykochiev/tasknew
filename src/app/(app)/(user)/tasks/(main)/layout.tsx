@@ -1,7 +1,7 @@
 import LinkButton from "@/components/Button/LinkButton";
-import ButtonGroup from "@/components/ButtonGroup";
-import PageHeaderEvo from "@/components/PageHeaderEvo";
-import LinkHeadingTab from "@/components/PageHeaderEvo/HeadingTab/LinkHeadingTab";
+import PageHeader from "@/components/PageHeader";
+import LinkHeadingTab from "@/components/PageHeader/HeadingTab/LinkHeadingTab";
+import PageHeading from "@/components/PageHeading";
 import { useId } from "react";
 
 export default function Layout({
@@ -10,20 +10,17 @@ export default function Layout({
     children: React.ReactNode;
   }>) {
     const id = useId()
-    return ( <>
-      <PageHeaderEvo heading="Задания">
-        <ButtonGroup>
-          <LinkHeadingTab href="/tasks/created" name={id}>Созданные</LinkHeadingTab>
-          <LinkHeadingTab href="/tasks/solved" name={id}>Решенные</LinkHeadingTab>
-          <LinkHeadingTab href="/tasks/favorites" name={id}>Избранное</LinkHeadingTab>
-        </ButtonGroup>
-        <ButtonGroup>
-          <LinkButton href="/discover/tasks">Найти еще</LinkButton>
-          <LinkButton href="/tasks/create">Создать</LinkButton>
-        </ButtonGroup>
-      </PageHeaderEvo>
+    return ( <div className="flex flex-col gap-[32px] w-[848px]">
+      <PageHeader headings={[<PageHeading>Задания</PageHeading>]} tabs={[
+        <LinkHeadingTab href="/tasks/created" name={id}>Созданные</LinkHeadingTab>,
+        <LinkHeadingTab href="/tasks/solved" name={id}>Решенные</LinkHeadingTab>,
+        <LinkHeadingTab href="/tasks/favorites" name={id}>Избранное</LinkHeadingTab>
+      ]} buttons={[
+        <LinkButton href="/discover/tasks">Найти еще</LinkButton>,
+        <LinkButton href="/tasks/create">Создать</LinkButton>
+      ]}/>
       {children}
-    </>       
+    </div>       
     )
   }
   

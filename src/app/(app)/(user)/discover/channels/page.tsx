@@ -1,6 +1,6 @@
 "use client"
 
-import { CHANNELS, CURRENT_USER } from "@/common/temp-data";
+import { CHANNELS } from "@/common/temp-data";
 import ChannelStruct from "@/common/types/data-sctructures/channel";
 import ContentContainer from "@/components/ContentContainer";
 import Pagination from "@/components/Pagination";

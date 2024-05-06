@@ -2,11 +2,10 @@
 
 import VariantStruct from "@/common/types/data-sctructures/variant";
 import Button from "@/components/Button";
-import ButtonGroup from "@/components/ButtonGroup";
 import LabeledCheckboxBar from "@/components/LabeledCheckboxBar";
 import NoDataPlaceholder from "@/components/NoDataPlaceholder";
-import PageHeaderEvo from "@/components/PageHeaderEvo";
-import HeadingTab from "@/components/PageHeaderEvo/HeadingTab";
+import PageHeader from "@/components/PageHeader";
+import HeadingTab from "@/components/PageHeader/HeadingTab";
 import TextArea from "@/components/TextArea";
 import VariantTIle from "@/components/Tile/Variant";
 import { useRouter } from "next/navigation";
@@ -60,13 +59,8 @@ export default function Page({ params }: { params: { slug: string, questionId: s
     }
 
     return ( <>
-        <PageHeaderEvo>
-            <HeadingTab>Изменение вопроса</HeadingTab>
-            <ButtonGroup>
-                {!isTextarea && <Button onClick={addVariant}>Добавить вариант</Button>}
-                <Button color="blue" onClick={onSubmit}>Сохранить</Button>
-            </ButtonGroup>
-        </PageHeaderEvo>
+        <PageHeader tabs={[<HeadingTab>Изменение вопроса</HeadingTab>]} buttons={!isTextarea ? [<Button onClick={addVariant}>Добавить вариант</Button>,
+                <Button color="blue" onClick={onSubmit}>Сохранить</Button>] : [<Button color="blue" onClick={onSubmit}>Сохранить</Button>]}/>
         <div className="w-[848px] flex flex-col gap-[16px] items-end" id={formId}>
             <TextArea valueState={[questionLabel, setQuestionLabel]} placeholder="Текст вопроса" name="label" required/>
             <LabeledCheckboxBar checked={isTextarea} onChange={() => {setTextarea(!isTextarea); onChange()}} label="Развернутый ответ"/>

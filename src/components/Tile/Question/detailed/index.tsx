@@ -10,9 +10,9 @@ interface DetailedQuestionTileProps extends ListEntryTileComponentProps<Question
     data: QuestionStruct
 }
 
-const DetailedQuestionTIle: FC<DetailedQuestionTileProps> = ({ light = false, data, index, deleteFunction, variants }) => {
+const DetailedQuestionTIle: FC<DetailedQuestionTileProps> = ({ data, index, deleteFunction, variants }) => {
     return (
-        <div className="tile-content tile-inactive flex flex-col w-full gap-[16px] bg-tile-gray rounded-[16px] p-[16px]">
+        <div className="flex flex-col w-full gap-[16px] bg-tile-gray rounded-[16px] p-[16px]">
             <div className="flex text-[16px] items-center justify-between">
                 <div className="flex gap-[6px]"><b>{index}.</b>{data.label}</div>
                 <div className="flex gap-[8px]">

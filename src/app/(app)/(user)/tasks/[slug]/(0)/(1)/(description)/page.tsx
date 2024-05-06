@@ -16,7 +16,7 @@ export default function Page({ params }: { params: { slug: string }}) {
             <Tile size="2x2" color="blue">{task.avatar}</Tile>
             <Tile size="3x2" name="Описание">{task.detailed_description}</Tile>
             <Tile name="Создатель"><Link href={`/profile/${CURRENT_USER.id}`}>{CURRENT_USER.nickname}</Link></Tile>
-            <Tile kind="bigtext" name="Количество вопросов">{QUESTIONS.length}</Tile>
+            <Tile big name="Количество вопросов">{QUESTIONS.length}</Tile>
         </div>
     </div>)
 }

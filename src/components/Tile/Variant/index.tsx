@@ -12,7 +12,7 @@ interface VariantTileProps extends ListEntryTileComponentProps<VariantStruct> {
     data: VariantStruct
 }
 
-const VariantTIle: FC<VariantTileProps> = ({ light = false, data, index, func }) => {
+const VariantTIle: FC<VariantTileProps> = ({ data, index, func }) => {
     const [updateVariant, deleteVariant] = func
     const [correct, setCorrect] = useState<boolean>(data.correct || false)
     const [label, setLabel] = useState<string>(data.label)

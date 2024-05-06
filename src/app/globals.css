@@ -10,69 +10,12 @@ div.tile {
   @apply outline-[9px] outline outline-bg-dark bg-bg-dark
 }
 
-.tile:not(:has(div.tile)) div.tile-content {
-  @apply p-[16px] flex
+.regular-tile .regular-tile {
+  @apply rounded-none
 }
 
-.tile:has(div.tile) {
+.regular-tile:has(.regular-tile) {
   @apply grid grid-cols-subgrid grid-rows-subgrid p-0
-}
-
-.tile:has(div.tile) div.tile-content {
-  @apply grid grid-cols-subgrid grid-rows-subgrid gap-[16px]
-}
-
-.tile:has(div.tile) div.tile {
-  outline: none;
-  @apply bg-transparent
-}
-
-.tile:has(div.tile) div.tile div.tile-content {
-  box-shadow: none; 
-  outline: none;
-  @apply hover:translate-y-0
-}
-
-div.tile-content {
-  outline: transparent solid 2px;
-  @apply rounded-[16px] hover:translate-y-[-4px] transition-all
-}
-
-div.tile-content.tile-inactive {
-  @apply hover:translate-y-0
-}
-
-div.tile-content.bg-tile-gray:hover {
-  outline-color: #757575;
-}
-div.tile-content.bg-tile-gray:hover:not(.tile-inactive) {
-  box-shadow: 0 4px 0 2px #757575;
-}
-
-div.tile-content.bg-main-blue:hover {
-  outline-color: #006D8F;
-}
-div.tile-content.bg-main-blue:hover:not(.tile-inactive) {
-  box-shadow: 0 4px 0 2px #006D8F;
-}
-
-div.tile-content.bg-tile-red:hover {
-  outline-color: #781818;
-}
-div.tile-content.bg-tile-red:hover:not(.tile-inactive) {
-  box-shadow: 0 4px 0 2px #781818;
-}
-
-.tile:has(div.tile) div.tile div.tile-content {
-  @apply flex flex-col gap-[8px]
-}
-
-div.tile-content.blue.tile-bigtext {
- @apply text-tile-gray
-}
-
-div.tile-content.gray.tile-bigtext {
-  @apply text-main-blue
 }
 
 .tile-1x1 {
@@ -109,7 +52,7 @@ div.tile-content.gray.tile-bigtext {
   @apply bg-white text-bg-dark
 }
 .mid-gray {
-  @apply bg-main-dark text-tile-gray outline outline-transparent outline-[2px] outline-offset-[-2px] hover:outline-tile-gray
+  @apply bg-main-dark text-tile-gray
 }
 .outline-gray {
   @apply outline-tile-gray
@@ -146,63 +89,4 @@ div.tile-content.gray.tile-bigtext {
 }
 .blanktile {
   perspective: 1000px;
-}
-.tile-content:hover::before {
-  animation: dupa 0.4s ease-out;
-}
-.tile-content {
-  position: relative;
-  overflow: hidden;
-}
-.tile-content::before {
-  z-index: 300;
-  top: -20%;
-  rotate: 10deg;
-  content: "";
-  left: -50%;
-  position: absolute;
-  height: 150%;
-  width: 40%;
-  background-color: white
-}
-.tile:has(.tile) .tile .tile-content::before {
-  content: none
-}
-.tile:has(.tile) .tile .tile-content {
-  animation: none;
-}
-.tile-inactive::before {
-  content: none;
-}
-
-@keyframes dupa {
-  from {
-    rotate: 10deg;
-    width: 40%;
-    left: -25%;
-  } to {
-    rotate: 5deg;
-    width: 5%;
-    left: 100%
-  }
-}
-
-.tile-edit {
-  animation: shake 0.2s infinite ease-in;
-}
-
-@keyframes shake {
-  0% {
-    rotate: 0deg
-  } 25% {
-    rotate: 0.5deg
-  } 50% {
-    rotate: 0deg
-  } 100% {
-    rotate: -0.5deg
-  }
-}
-
-.dupa {
-  box-shadow: inset 0 0 360px 20px #2E2E2E;
 }
