@@ -11,15 +11,17 @@ export default function Page() {
         e.preventDefault()
         router.push("/home")
     }
-    return <form className="flex flex-col gap-[16px] w-[848px]" onSubmit={onSubmit}>
-        <div className="grid gap-[16px] grid-cols-2">
-            <InputField type="text" placeholder="Никнейм" required/>
-            <InputField type="email" placeholder="E-mail" required/>
-            <InputField type="text" placeholder="Имя"/>
-            <InputField type="password" placeholder="Пароль" required/>
-            <InputField type="text" placeholder="Фамилия"/>
-            <InputField type="password" placeholder="Подтвердите пароль" required/>
-        </div>
-        <Button type="submit">Зарегистрироваться</Button>
-    </form>
+    return <>
+        <form className="flex flex-col gap-[32px] w-[848px]" onSubmit={onSubmit}>
+            <div className="grid gap-[16px] grid-cols-2">
+                <InputField type="text" placeholder="Никнейм *" required/>
+                <InputField type="email" placeholder="E-mail *" required/>
+                <InputField type="text" placeholder="Имя"/>
+                <InputField type="password" placeholder="Пароль *" required/>
+                <InputField type="text" placeholder="Фамилия"/>
+                <InputField type="password" placeholder="Подтвердите пароль *" required/>
+            </div>
+            <Button stretched type="submit">Зарегистрироваться</Button>
+        </form>
+    </>
 }

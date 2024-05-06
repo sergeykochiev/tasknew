@@ -11,9 +11,11 @@ export default function Page() {
         e.preventDefault()
         router.push("/home/recent/tasks")
     }
-    return <form className="flex flex-col gap-[16px] w-[848px]" onSubmit={onSubmit}>
-        <InputField type="email" placeholder="E-mail" required/>
-        <InputField type="password" placeholder="Пароль" required/>
+    return <form className="flex flex-col gap-[32px] w-[848px]" onSubmit={onSubmit}>
+        <div className="grid gap-[16px] grid-cols-1">
+            <InputField type="email" placeholder="E-mail *" required/>
+            <InputField type="password" placeholder="Пароль *" required/>
+        </div>
         <Button type="submit">Войти</Button>
     </form>
 }

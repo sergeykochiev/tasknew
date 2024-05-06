@@ -17,7 +17,7 @@ const Header: FC = () => {
             <Link className="font-bold text-[24px] tracking-[0.25em] cursor-pointer select-none" href="/home/recent/tasks">TASK</Link>
             <div className="flex gap-0 h-full">
                 <HeaderTab light={light} href="/discover/tasks" representedPaths={["/discover/tasks", "/discover/channels", "/discover/users"]}>Найти</HeaderTab>
-                <HeaderTab light={light} href="/profile" representedPaths={["/profile", "/profile/subscribtions", "profile/edit", "profile/edit/password"]}>Профиль</HeaderTab>
+                <HeaderTab light={light} href="/profile" representedPaths={["/profile", "/profile/subscribtions", "/profile/edit", "/profile/edit/password"]}>Профиль</HeaderTab>
             </div>
         </div>
     </div>

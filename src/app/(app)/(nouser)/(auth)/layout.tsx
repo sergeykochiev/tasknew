@@ -9,7 +9,8 @@ export default function Layout({
     children: React.ReactNode;
   }>) {
     const id = useId()
-    return (<div className="flex flex-col items-center bg-bg-dark min-h-smscreen">
+    return (
+    <div className="flex flex-col gap-[32px] items-center bg-bg-dark min-h-smscreen">
       <PageHeader className="justify-around items-center"headings={[
         <PageHeading>Аутентификация</PageHeading>
       ]} tabs={[
