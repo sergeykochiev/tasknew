@@ -17,6 +17,7 @@ export default function Template({
       <Bar evenly>
         <LinkHeadingTab stretch href={`/channels/${params.slug}/edit`} name={id}>Данные канала</LinkHeadingTab>
         <LinkHeadingTab stretch href={`/channels/${params.slug}/edit/add`} name={id}>Добавить задание</LinkHeadingTab>
+        <LinkHeadingTab stretch href={`/channels/${params.slug}/edit/member`} name={id}>Удалить участника</LinkHeadingTab>
       </Bar>
       {children}
     </div>

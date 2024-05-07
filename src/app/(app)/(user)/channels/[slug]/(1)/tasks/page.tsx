@@ -14,7 +14,7 @@ export default function Page({ params }: { params: { slug: string }}) {
     const onClick = (data: TaskStruct) => {
         router.push(`/tasks/${data.slug}`)
     }
-
+    const [search, setSearch] = useState<string>("")
     const router = useRouter()
     const query = useSearchParams()
     const [page, setPage] = useState<number>(pageGet())
@@ -22,11 +22,10 @@ export default function Page({ params }: { params: { slug: string }}) {
     const channel = CHANNELS.find(e => e.slug == params.slug)
     if (!channel) return <NoDataPlaceholder/>
     const tasks = TASKS.filter(e => e.channelId == channel.id).slice((page - 1) * 8, (page - 1) * 8 + 8)
-    const lastPage = TASKS.length / 8
 
     return ( <>
-        <ContentContainer searchable={false} data={tasks} Component={TaskTile} onClick={onClick}/>
-        {tasks.length > 0 && <Pagination page={page} lastPage={lastPage} onPageChange={(page) => setPage(page)}/>}
+        <ContentContainer searchState={[search, setSearch]} data={tasks} Component={TaskTile} onClick={onClick}/>
+        {tasks.length > 0 && <Pagination page={page} lastPage={Math.floor(tasks.length / 8)} onPageChange={(page) => setPage(page)}/>}
     </>
     )
 }

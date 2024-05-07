@@ -24,7 +24,7 @@ export default function Template({
     return <div className="pt-[64px] mt-[44px] flex flex-col gap-[16px] w-[848px]">
         <HeadingTabGroup>
           <LinkPageHeading href={`/channels/${params.slug}`} name={id} paths={[`/channels/${params.slug}/tasks`, `/channels/${params.slug}/members`]}>{channel.label}</LinkPageHeading>
-          {isMine && <LinkPageHeading href={`/channels/${params.slug}/edit`} name={id} paths={[`/channels/${params.slug}/edit/add`]}>Редактировать</LinkPageHeading>}
+          {isMine && <LinkPageHeading href={`/channels/${params.slug}/edit`} name={id} paths={[`/channels/${params.slug}/edit/add`, `/channels/${params.slug}/edit/member`]}>Редактировать</LinkPageHeading>}
         </HeadingTabGroup>
         {children}
     </div>

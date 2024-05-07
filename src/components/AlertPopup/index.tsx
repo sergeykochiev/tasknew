@@ -17,7 +17,7 @@ const AlertPopup: FC<AlertPopupProps> = (props) => {
             <div className="flex flex-col gap-[16px] p-[16px] text-[16px] rounded-[16px] bg-main-dark text-tile-gray fixed z-50 opacity-100">
                 {props.label}
                 <ButtonGroup>
-                    {typeof props.action == "string" ? <LinkButton stretched color="blue" href={props.action}>{props.actionName}</LinkButton> : <Button color="blue" onClick={props.action}>{props.actionName}</Button>}
+                    {typeof props.action == "string" ? <LinkButton stretched color="blue" href={props.action}>{props.actionName}</LinkButton> : <Button stretched color="blue" onClick={props.action}>{props.actionName}</Button>}
                     <Button stretched onClick={props.closeAlert}>Отмена</Button>
                 </ButtonGroup>
             </div>
