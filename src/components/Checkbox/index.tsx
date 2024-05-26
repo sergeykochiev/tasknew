@@ -1,11 +1,16 @@
-import { FC, InputHTMLAttributes } from "react";
+"use client"
+
+import { IoMdCheckmark } from "react-icons/io";
+import { FC, InputHTMLAttributes, useState } from "react";
 
 interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {}
 
 const Checkbox: FC<CheckboxProps> = (props) => {
+    const [checked, setChecked] = useState<boolean>()
     return (
-        <label className="outline transition-all rounded-[4px] outline-main-dark aspect-square h-[20px] outline-[2px] outline-offset-[-2px] bg-transparent has-[input:checked]:bg-main-dark">
-            <input className="hidden absolute" type="checkbox" {...props}/>
+        <label className="outline transition-all rounded-default grid place-items-center outline-default aspect-square h-[20px] bg-white has-[input:checked]:bg-black has-[input:checked]:text-white">
+            {checked && <IoMdCheckmark size={14}/>}
+            <input className="hidden absolute" type="checkbox" checked={checked} readOnly onChange={() => setChecked(!checked)} {...props}/>
         </label>
     )
 }

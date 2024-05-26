@@ -1,14 +1,13 @@
-class ChannelStruct {
+class Channel {
     constructor(
         public id: number,
         public creatorId: number,
-        public brief_description: string,
         public description: string,
         public label: string,
         public price: number | null,
-        public is_public: boolean,
+        public visibility: boolean,
         public slug: string
     ) {}
 }
 
-export default ChannelStruct
+export default Channel

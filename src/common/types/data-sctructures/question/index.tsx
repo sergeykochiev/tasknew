@@ -1,7 +1,6 @@
-class QuestionStruct {
+class Question {
     constructor(
         public id: number,
         public label: string,
-        public isText: boolean
     ) {}
 }

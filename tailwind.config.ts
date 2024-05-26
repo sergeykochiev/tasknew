@@ -41,15 +41,9 @@ const config: Config = {
         "main": "128px"
       },
       colors: {
-        "bg-dark": "#2E2E2E",
-        "main-blue": "#00C2FF",
-        "main-dark": "#404040",
-        "tile-gray": "#E2E2E2",
-        "main-gray": "#D9D9D9",
-        "tile-red": "#F34D4D",
-        "blanktile": "#353535",
-        "tile-dark-gray": "363636",
-        "phblank": "#686868"
+        "accent": "#40ACCE",
+        "back": "#F3F3F3",
+        "dark": "#494949"
       },
     },
   },

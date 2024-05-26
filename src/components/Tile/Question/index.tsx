@@ -1,18 +1,20 @@
-import { ListEntryTileComponentProps } from "@/common/types/components/tile-list-entry"
-import { FC } from "react"
+import React from 'react'
 
-interface QuestionTileProps extends ListEntryTileComponentProps<QuestionStruct> {
-    index: number
-    data: QuestionStruct
+interface QuestionTileProps {
+    data: Question
+    children: React.ReactNode //variants
+    inactive?: boolean
 }
 
-const QuestionTIle: FC<QuestionTileProps> = ({ data, onClick, index }) => {
+const QuestionTile = ({ inactive = false, ...p }: QuestionTileProps) => {
     return (
-        <div onClick={() => onClick && onClick(data)} className="flex h-[56px] w-full text-[16px] items-center justify-between px-[24px] gap-[6px] bg-tile-gray rounded-[16px]">
-            <div className="overflow-hidden text-ellipsis flex gap-[6px]"><b>{index}.</b>{data.label}</div>
-            <div className="text-[12px] flex items-center gap-[16px]">{data.isText ? "Развернутый ответ" : "Есть варианты ответа"}</div>
+        <div className={`${!inactive && "hover-default group cursor-pointer"} transition-all p-5 flex flex-col gap-5 text-base font-normal justify-between all-default`}>
+            {p.data.label}
+            <div className='grid grid-cols-2 gap-4 auto-rows-auto has-[:only-child]:grid-cols-1'>
+                {p.children}
+            </div>
         </div>
     )
 }
 
-export default QuestionTIle
+export default QuestionTile

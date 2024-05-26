@@ -1,4 +1,4 @@
-class TaskStruct {
+class Task {
     constructor(
         public id: number,
         public title: string,
@@ -16,4 +16,4 @@ class TaskStruct {
     ) {}
 }
 
-export default TaskStruct
+export default Task

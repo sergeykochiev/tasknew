@@ -34,9 +34,8 @@ function generateChannels(count: number): ChannelStruct[] {
             creatorId: i,
             label: `Канал ${i}`,
             price: null,
-            brief_description: "Краткое описание",
-            description: "Полное описание",
-            is_public: true,
+            description: "Краткое описание",
+            visibility: true,
             slug: String(i)
         })
     }
@@ -84,30 +83,25 @@ function generateData(count: number): [UserStruct[], ProfileStruct[], TaskStruct
     ]
 }
 
-export const QUESTIONS: Array<QuestionStruct> = [
+export const QUESTIONS: Array<Question> = [
     {
-        label: "Вопрос 1",
-        isText: false,
+        label: "Lorem ipsum dolor sit amet consectetur. Aliquam non viverra volutpat tempus. Vehicula faucibus consequat sit sit ipsum hendrerit ipsum dignissim. Consectetur mi fusce leo ultrices purus. Lobortis mattis sollicitudin pharetra duis gravida lorem aliquam elit gravida. Augue sed est libero congue neque turpis. Quis feugiat donec tincidunt sed.",
         id: 1
     },
     {
-        label: "Вопрос 2",
-        isText: false,
+        label: "Lorem ipsum dolor sit amet consectetur. Aliquam non viverra volutpat tempus. Vehicula faucibus consequat sit sit ipsum hendrerit ipsum dignissim. Consectetur mi fusce leo ultrices purus. Lobortis mattis sollicitudin pharetra duis gravida lorem aliquam elit gravida. Augue sed est libero congue neque turpis. Quis feugiat donec tincidunt sed. Amet sodales feugiat nunc vestibulum erat eget imperdiet. Sapien ullamcorper nulla eu diam in gravida diam. Pharetra augue massa quisque ultricies aliquet faucibus mauris.",
         id: 2
     },
     {
-        label: "Вопрос 3",
-        isText: true,
+        label: "Lorem ipsum dolor sit amet consectetur. Aliquam non viverra volutpat tempus. Vehicula faucibus consequat sit sit ipsum hendrerit ipsum dignissim. Consectetur mi fusce leo ultrices purus. Lobortis mattis sollicitudin pharetra duis gravida lorem aliquam elit gravida. Augue sed est libero congue neque turpis. Quis feugiat donec tincidunt sed. Amet sodales feugiat nunc vestibulum erat eget imperdiet. Sapien ullamcorper nulla eu diam in gravida diam. Pharetra augue massa quisque ultricies aliquet faucibus mauris.",
         id: 3
     },
     {
-        label: "Вопрос 4",
-        isText: false,
+        label: "Lorem ipsum dolor sit amet consectetur. Aliquam non viverra volutpat tempus. Vehicula faucibus consequat sit sit ipsum hendrerit ipsum dignissim. Consectetur mi fusce leo ultrices purus.",
         id: 4
     },
     {
-        label: "Вопрос 5",
-        isText: true,
+        label: "Lorem ipsum dolor sit amet consectetur. Aliquam non viverra volutpat tempus. Vehicula faucibus consequat sit sit ipsum hendrerit ipsum dignissim. Consectetur mi fusce leo ultrices purus. Lobortis mattis sollicitudin pharetra duis gravida lorem aliquam elit gravida.",
         id: 5
     },
 ]
@@ -122,11 +116,11 @@ export const VARIANTS: Array<VariantStruct> = [
         correct: false
     },
     {
-        label: "Вариант 4",
+        label: "Вариант 3",
         correct: true
     },
     {
-        label: "Вариант 5",
+        label: "Вариант 4",
         correct: true
     },
     {

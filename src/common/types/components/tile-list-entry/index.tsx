@@ -1,4 +1,5 @@
-export interface ListEntryTileComponentProps<T> {
-    data?: T
-    onClick?: (data: T) => void
+import { HTMLAttributes } from "react"
+
+export interface ListEntryTileComponentProps<T> extends HTMLAttributes<HTMLElement> {
+    data: T
 }
