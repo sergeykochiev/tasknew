@@ -1,8 +1,6 @@
 "use client"
 
-import { apply2pxHover } from "@/common/helpers";
-import { ComponentColors } from "@/common/types/colors";
-import { ButtonHTMLAttributes, FC, useEffect, useId } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     square?: boolean
