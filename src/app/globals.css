@@ -13,10 +13,13 @@
     @apply bg-back text-dark
 }
 .hover-default {
-    @apply hover:bg-dark hover:text-white hover:rounded-lg
+    @apply hover:bg-dark hover:text-white hover:rounded-xl
 }
 .rounded-default {
     @apply rounded-md
+}
+.rounded-outer-box {
+    @apply rounded-xl
 }
 .all-default {
     @apply outline-default color-default rounded-default

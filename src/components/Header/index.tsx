@@ -9,9 +9,9 @@ const Header: FC = () => {
         <div className="flex justify-between items-center w-[950px]">
             <div className="flex gap-10 tracking-[0.1em] text-sm">
                 <Link href="/tasks">Задания</Link>
-                <Link href="/channels/subscribed">Каналы</Link>
+                <Link href="/channels">Каналы</Link>
             </div>
-            <Link className="font-bold text-[24px] tracking-[0.25em] cursor-pointer select-none" href="/home/recent/tasks">TASK TYCOON</Link>
+            <Link className="font-bold text-[24px] tracking-[0.25em] cursor-pointer select-none" href="/">TASK TYCOON</Link>
             <div className="flex gap-10 tracking-[0.1em] text-sm">
                 <Link href="/discover/tasks">Найти</Link>
                 <Link href="/profile">Профиль</Link>

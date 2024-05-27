@@ -5,6 +5,7 @@ import VariantStruct from "@/common/types/data-sctructures/variant"
 import Button from "@/components/Button"
 import Checkbox from "@/components/Checkbox"
 import InputField from "@/components/InputField"
+import LabeledCheckbox from "@/components/LabeledCheckbox"
 import QuestionTile from "@/components/Tile/Question"
 import VariantTIle from "@/components/Tile/Variant"
 import { useId, useState } from "react"
@@ -21,11 +22,12 @@ function InnerPage() {
     const [variants, setVariants] = useState<VariantStruct[]>([{label: "label", correct: false}])
     return <div className="flex gap-5 flex-col">
         {!createMode && <Button stretch onClick={() => setCreateMode(true)}>Создать вопрос</Button>}
-        {createMode && <div className="outline-default p-5 rounded-default flex flex-col gap-5">
+        {createMode && <div className="outline-default p-5 rounded-outer-box flex flex-col gap-5">
             <label className="flex gap-5 items-center">
                 Описание
                 <InputField placeholder="Введите описание вопроса"/>
             </label>
+            <LabeledCheckbox label="Выложить в каталог"/>
             <Button stretch onClick={() => setVariants([...variants, new VariantStruct("label", false)])}>Добавить вариант ответа</Button>
             {variants.length !== 0 && <div className="flex flex-col gap-4">
                 {variants.length < 2 ? variants.map((e, i) => <InputField key={i} defaultValue="Вариант ответа"/>) : variants.map((e, i) => <div key={i} className="flex gap-4 items-center">

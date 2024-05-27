@@ -2,6 +2,7 @@
 
 import Button from "@/components/Button"
 import InputField from "@/components/InputField"
+import LabeledCheckbox from "@/components/LabeledCheckbox"
 import { useRouter } from "next/navigation"
 
 export default function Page() {
@@ -16,6 +17,7 @@ export default function Page() {
                 {fields.map((e, i) => <InputField key={i} placeholder={"Введите " + e.toLowerCase()}/>)}
             </div>
         </div>
+        <LabeledCheckbox label="Показывать в поиске"/>
         <Button stretch onClick={() => router.push("/tasks/create/questions_add")}>Далее</Button>
     </div>
 }
