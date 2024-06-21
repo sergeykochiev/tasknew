@@ -1,52 +1,46 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      animation: {
-        "blank-tile-flip": "flip 1s linear"
-      },
-      keyframes: {
-        "flip": {
-          "0%": { transform: "rotate3d(0)" },
-          "100%": { transform: "rotate3d(180)" }
+    content: [
+        "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+        "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+        "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    theme: {
+        extend: {
+            colors: {
+                "tt-blue": "#00A3FF",
+                "tt-white": "#FAFAFA",
+                "tt-lightgray": "#EEEEEE",
+                "tt-gray": "#BABABA",
+                "tt-red": "#FF3535",
+                "tt-black": "#121212",
+                "tt-darkgray": "#686868"
+            },
+            fontSize: {
+                "tiny": "10px",
+                "caption": "12px",
+                "button": "14px",
+                "body": "16px",
+                "subtitle": "20px",
+                "title": "24px",
+                "heading": "32px",
+                "biggest": "48px"
+            },
+            gap: {
+                "tiny": "8px",
+                "small": "12px",
+                "regular": "16px",
+                "def": "20px",
+                "big": "32px",
+                "bigger": "48px",
+                "biggest": "64px"
+            },
+            height: {
+                "def": "44px"
+            }
         },
-      },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
-      minHeight: {
-        smscreen: "100svh"
-      },
-      gridTemplateColumns: {
-        "3x128": "repeat(3, 128px)",
-        "6x128": "repeat(6, 128px)",
-        "12x128": "repeat(12, 128px)",
-      },
-      gridTemplateRows: {
-        "4x128": "repeat(4, 128px)",
-        "back-grid": "repeat(6, 128px)"
-      },
-      gridAutoRows: {
-        "main": "128px"
-      },
-      gridAutoColumns: {
-        "main": "128px"
-      },
-      colors: {
-        "accent": "#40ACCE",
-        "back": "#F3F3F3",
-        "dark": "#494949"
-      },
     },
-  },
-  plugins: [],
+    plugins: [],
 };
 export default config;

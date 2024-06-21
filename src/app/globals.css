@@ -2,29 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
-}
-
-.outline-default {
-    @apply outline outline-dark outline-1 -outline-offset-1
-}
-.color-default {
-    @apply bg-back text-dark
-}
-.hover-default {
-    @apply hover:bg-dark hover:text-white hover:rounded-xl
-}
-.rounded-default {
-    @apply rounded-md
-}
-.rounded-outer-box {
-    @apply rounded-xl
-}
-.all-default {
-    @apply outline-default color-default rounded-default
-}
-main {
-    background-image: "./ph_plus-thin.svg";
-    background-repeat: repeat;
+} */
+.outline-def {
+    @apply outline outline-1 -outline-offset-1
 }

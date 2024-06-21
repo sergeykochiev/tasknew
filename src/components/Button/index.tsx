@@ -1,22 +1,14 @@
 "use client"
 
-import { ButtonHTMLAttributes, FC } from "react";
+import { useRouter } from "next/navigation";
+import { ButtonHTMLAttributes } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    square?: boolean
     stretch?: boolean
-    inactive?: boolean
+    href?: string
 }
 
-const Button: FC<ButtonProps> = ({
-    square = false,
-    stretch = false,
-    inactive = false,
-    ...props
-}) => {
-    return (
-        <button className={`transition-all ${!inactive && "hover-default"} ${square ? "aspect-square" : "px-6"} ${stretch && "w-full"} whitespace-nowrap text-sm relative grid place-items-center h-[42px] all-default`} {...props}/>
-    )
+export default function Button({ onClick, ...p }: ButtonProps) {
+    const router = useRouter()
+    return <button {...p} onClick={(e) => p.href ? router.push(p.href) : onClick && onClick(e)} className={`${p.stretch && "w-full flex-grow"} whitespace-nowrap transition-all h-def font-medium outline-def outline-tt-darkgray px-[32px] text-button text-tt-black hover:outline-transparent hover:bg-tt-blue hover:font-semibold hover:text-tt-white hover:shadow`}/>
 }
-
-export default Button
