@@ -13,7 +13,7 @@ export default function InputField(p: InputFieldProps) {
         <div className="flex gap-small flex-grow">
             <IoIosSearch className="transition-all group-has-[input:focus]:hidden group-hover:text-tt-darkgray text-tt-gray" size={20}/>
             <div className="flex flex-col flex-grow">
-                <div className="group-has-[input:focus]:block hidden text-tiny text-tt-darkgray">{p.visibleName || p.placeholder}</div>
+                <div className="group-has-[input:focus]:block hidden font-medium text-tiny text-tt-darkgray">{p.visibleName || p.placeholder}</div>
                 <input {...p} type="text" className="whitespace-nowrap flex placeholder:text-tt-gray bg-inherit my-[-2px] text-tt-darkgray focus:text-tt-black text-body outline-none border-none"/>
             </div>
         </div>
