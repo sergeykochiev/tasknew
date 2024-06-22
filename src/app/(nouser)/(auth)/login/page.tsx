@@ -3,7 +3,6 @@
 import Button from "@/components/Button";
 import TTLink from "@/components/CustomLink";
 import InputField from "@/components/InputField";
-import Link from "next/link";
 
 export default function Page() {
     return <div className="flex flex-col items-center w-full flex-grow justify-center gap-big">

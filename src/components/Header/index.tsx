@@ -1,5 +1,6 @@
 import { sourceCodePro } from "@/common/fonts"
 import HeaderTab from "./HeaderTab"
+import Link from "next/link"
 
 export default function Header() {
     return <header className={`${sourceCodePro.className} h-[57px] w-full bg-tt-white flex justify-center`}>

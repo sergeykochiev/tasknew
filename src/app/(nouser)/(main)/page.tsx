@@ -8,7 +8,7 @@ interface CardProps {
 }
 
 function Card(p: CardProps) {
-    return <div className="flex flex-col gap-def bg-tt-white outline-def outline-tt-darkgray p-[20px] shadow">
+    return <div className="transition-all hover:shadow-md hover:bg-white hover:scale-[1.01] flex flex-col gap-def bg-tt-white outline-def outline-tt-darkgray p-[20px] shadow">
         <div className="font-medium text-subtitle">
             {p.label}
         </div>
@@ -19,11 +19,16 @@ function Card(p: CardProps) {
 }
 
 export default function Page() {
-    return <div className="flex flex-col items-center w-full">
-        <section className={`${sourceCodePro.className} py-[128px] bg-tt-lightgray items-center flex flex-col gap-big w-full`}>
-            <div className="text-biggest font-bold text-tt-blue">Task Tycoon</div>
-            <div className="text-tt-darkgray text-title after:content-[']'] before:content-['['] font-bold lowercase">платформа для автоматизированной оценки знаний</div>
-            <Button href="/signup">Попробовать</Button>
+    return <div className="flex flex-col items-center w-full select-none">
+        <section className={`${sourceCodePro.className} overflow-hidden group py-[128px] bg-tt-lightgray items-center flex flex-col gap-big w-full`}>
+            <div className="text-biggest z-10 duration-500 font-bold transition-all group-has-[button:hover]:text-tt-white text-tt-blue">Task Tycoon</div>
+            <div className="text-tt-darkgray duration-500 z-10 transition-all group-has-[button:hover]:text-tt-lightgray text-title after:content-[']'] before:content-['['] font-bold lowercase">платформа для автоматизированной оценки знаний</div>
+            <div className="transition-all flex items-center justify-center relative z-0 has-[button:hover]:outline-tt-white outline-def">
+                <Button className="duration-[400ms]" href="/signup">Попробовать</Button>
+                <div className="rounded-none transition-all duration-500 absolute w-full h-full bg-tt-blue top-0 scale-100 group-has-[button:hover]:scale-[20] group-has-[button:hover]:rounded-full z-[-1]">
+
+                </div>
+            </div>
         </section>
         <section className="py-[64px] bg-tt-white gap-big">
             <div className="flex flex-col gap-biggest w-[921px]">
