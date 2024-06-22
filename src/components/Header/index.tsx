@@ -3,7 +3,7 @@ import HeaderTab from "./HeaderTab"
 import Link from "next/link"
 
 export default function Header() {
-    return <header className={`${sourceCodePro.className} h-[57px] w-full bg-tt-white flex justify-center`}>
+    return <header className={`${sourceCodePro.className} h-[57px] px-[24px] w-full bg-tt-white flex justify-center`}>
         <div className="flex justify-between items-center w-[1920px]">
             <div className="uppercase text-subtitle font-extrabold text-tt-blue">Task Tycoon</div>
             <div className="flex gap-big">
